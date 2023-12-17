@@ -1,9 +1,16 @@
 // @@@SNIPSTART money-transfer-project-template-ts-workflow
-import { proxyActivities } from '@temporalio/workflow';
+import { WorkflowInterceptorsFactory, proxyActivities } from '@temporalio/workflow';
 import { ApplicationFailure } from '@temporalio/common';
+
+import {
+  OpenTelemetryInboundInterceptor,
+  OpenTelemetryOutboundInterceptor,
+} from '@temporalio/interceptors-opentelemetry/lib/workflow';
 
 import type * as activities from './activities';
 import type { PaymentDetails } from './shared';
+
+console.log(`DEBUG: ${__filename}`)
 
 export async function moneyTransfer(details: PaymentDetails): Promise<string> {
   // Get the Activities for the Workflow and set up the Activity Options.
@@ -37,7 +44,7 @@ export async function moneyTransfer(details: PaymentDetails): Promise<string> {
     try {
       refundResult = await refund(details);
       throw ApplicationFailure.create({
-        message: `Failed to deposit money into account ${details.targetAccount}. Money returned to ${details.sourceAccount}. Cause: ${depositErr}.`,
+        message: `Failed to deposit money into account ${details.targetAccount}. Money returned to ${details.sourceAccount}. Cause: ${depositErr}, ${refundResult}.`,
       });
     } catch (refundErr) {
       throw ApplicationFailure.create({
@@ -48,3 +55,9 @@ export async function moneyTransfer(details: PaymentDetails): Promise<string> {
   return `Transfer complete (transaction IDs: ${withdrawResult}, ${depositResult})`;
 }
 // @@@SNIPEND
+
+// Export the interceptors
+export const interceptors: WorkflowInterceptorsFactory = () => ({
+  inbound: [new OpenTelemetryInboundInterceptor()],
+  outbound: [new OpenTelemetryOutboundInterceptor()],
+});

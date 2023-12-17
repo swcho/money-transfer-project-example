@@ -2,6 +2,8 @@
 import type { PaymentDetails } from './shared';
 import { BankingService } from './banking-client';
 
+console.log(`DEBUG: ${__filename}`)
+
 export async function withdraw(details: PaymentDetails): Promise<string> {
   console.log(
     `Withdrawing $${details.amount} from account ${details.sourceAccount}.\n\n`
@@ -17,7 +19,7 @@ export async function withdraw(details: PaymentDetails): Promise<string> {
   } catch (error) {
     throw new Error('Unexpected error occurred');
   }
-};
+}
 // @@@SNIPEND
 
 // @@@SNIPSTART money-transfer-project-template-ts-deposit-activity

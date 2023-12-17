@@ -10,7 +10,9 @@
     "lint": "eslint src",
     "test": "mocha --exit --require ts-node/register --require source-map-support/register src/mocha/*.test.ts",
     "worker": "ts-node src/worker.ts",
-    "worker.watch": "nodemon src/worker.ts"
+    "worker:debug": "node lib/worker.js",
+    "worker.watch": "nodemon src/worker.ts",
+    "execute": "concurrently --names 'server,worker,client' -c 'blue,red,green' 'GRPC_VERBOSITY=DEBUG GRPC_TRACE=all temporal server start-dev' 'sleep 1 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run worker' 'sleep 3 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run client'"
   },
   "nodemonConfig": {
     "execMap": {
@@ -22,8 +24,14 @@
     ]
   },
   "dependencies": {
+    "@grpc/grpc-js": "~1.7.3",
+    "@opentelemetry/core": "^1.8.0",
+    "@opentelemetry/resources": "^1.8.0",
+    "@opentelemetry/sdk-node": "^0.33.0",
+    "@opentelemetry/sdk-trace-base": "^1.8.0",
     "@temporalio/activity": "^1.8.6",
     "@temporalio/client": "^1.8.6",
+    "@temporalio/interceptors-opentelemetry": "^1.8.6",
     "@temporalio/worker": "^1.8.6",
     "@temporalio/workflow": "^1.8.6",
     "mocha": "^10.2.0",
@@ -36,6 +44,7 @@
     "@types/mocha": "^10.0.2",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
+    "concurrently": "^8.2.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-deprecation": "^1.2.1",

@@ -1,0 +1,539 @@
+
+> temporal-money-transfer@0.1.0 execute
+> concurrently --names 'server,worker,client' -c 'blue,red,green' 'GRPC_VERBOSITY=DEBUG GRPC_TRACE=all temporal server start-dev' 'sleep 1 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run worker' 'sleep 3 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run client'
+
+[server] {"level":"info","ts":"2023-12-17T11:44:39.078+0900","msg":"Use rpc address 127.0.0.1:7233 for cluster active.","component":"metadata-initializer","logging-call-at":"fx.go:736"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.082+0900","msg":"historyClient: ownership caching disabled","service":"history","logging-call-at":"client.go:82"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.083+0900","msg":"Created gRPC listener","service":"history","address":"127.0.0.1:54151","logging-call-at":"rpc.go:152"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.085+0900","msg":"Created gRPC listener","service":"matching","address":"127.0.0.1:54153","logging-call-at":"rpc.go:152"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.086+0900","msg":"historyClient: ownership caching disabled","service":"matching","logging-call-at":"client.go:82"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.089+0900","msg":"historyClient: ownership caching disabled","service":"frontend","logging-call-at":"client.go:82"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.089+0900","msg":"Created gRPC listener","service":"frontend","address":"127.0.0.1:7233","logging-call-at":"rpc.go:152"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.089+0900","msg":"Service is not requested, skipping initialization.","service":"internal-frontend","logging-call-at":"fx.go:477"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.091+0900","msg":"historyClient: ownership caching disabled","service":"worker","logging-call-at":"client.go:82"}
+[server] Starting UI server...
+[server] 
+[server]    ____    __
+[server]   / __/___/ /  ___
+[server]  / _// __/ _ \/ _ \
+[server] /___/\__/_//_/\___/ v4.9.0
+[server] High performance, minimalist Go web framework
+[server] https://echo.labstack.com
+[server] ____________________________________O/_______
+[server]                                     O\
+[server] {"level":"info","ts":"2023-12-17T11:44:39.091+0900","msg":"Starting server for services","value":{"frontend":{},"history":{},"matching":{},"worker":{}},"logging-call-at":"server_impl.go:94"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.091+0900","msg":"PProf listen on ","port":54149,"logging-call-at":"pprof.go:73"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.093+0900","msg":"RuntimeMetricsReporter started","service":"worker","logging-call-at":"runtime.go:138"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.093+0900","msg":"worker starting","service":"worker","component":"worker","logging-call-at":"service.go:379"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"fifo scheduler started","service":"history","logging-call-at":"fifo_scheduler.go:96"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"interleaved weighted round robin task scheduler started","service":"history","logging-call-at":"interleaved_weighted_round_robin.go:197"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"RuntimeMetricsReporter started","service":"frontend","logging-call-at":"runtime.go:138"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"frontend starting","service":"frontend","logging-call-at":"service.go:336"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"Starting to serve on frontend listener","service":"frontend","logging-call-at":"service.go:355"}
+[server] ⇨ http server started on 127.0.0.1:8233
+[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"Membership heartbeat upserted successfully","address":"127.0.0.1","port":54156,"hostId":"38fff2b2-9c86-11ee-b0ef-5a16eb2ad7bb","logging-call-at":"monitor.go:256"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"RuntimeMetricsReporter started","service":"matching","logging-call-at":"runtime.go:138"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"matching starting","service":"matching","logging-call-at":"service.go:91"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.095+0900","msg":"Starting to serve on matching listener","service":"matching","logging-call-at":"service.go:104"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.095+0900","msg":"fifo scheduler started","service":"history","logging-call-at":"fifo_scheduler.go:96"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.095+0900","msg":"interleaved weighted round robin task scheduler started","service":"history","logging-call-at":"interleaved_weighted_round_robin.go:197"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.095+0900","msg":"fifo scheduler started","service":"history","component":"memory-scheduled-queue-processor","logging-call-at":"fifo_scheduler.go:96"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"fifo scheduler started","service":"history","logging-call-at":"fifo_scheduler.go:96"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"interleaved weighted round robin task scheduler started","service":"history","logging-call-at":"interleaved_weighted_round_robin.go:197"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"Membership heartbeat upserted successfully","address":"127.0.0.1","port":54150,"hostId":"38ff9484-9c86-11ee-b0ef-5a16eb2ad7bb","logging-call-at":"monitor.go:256"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"Membership heartbeat upserted successfully","address":"127.0.0.1","port":54154,"hostId":"38ff0c3a-9c86-11ee-b0ef-5a16eb2ad7bb","logging-call-at":"monitor.go:256"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"bootstrap hosts fetched","bootstrap-hostports":"127.0.0.1:54154,127.0.0.1:54150,127.0.0.1:54156","logging-call-at":"monitor.go:298"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.097+0900","msg":"bootstrap hosts fetched","bootstrap-hostports":"127.0.0.1:54154,127.0.0.1:54150,127.0.0.1:54156","logging-call-at":"monitor.go:298"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.097+0900","msg":"bootstrap hosts fetched","bootstrap-hostports":"127.0.0.1:54156,127.0.0.1:54154,127.0.0.1:54150","logging-call-at":"monitor.go:298"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"RuntimeMetricsReporter started","service":"history","logging-call-at":"runtime.go:138"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"history starting","service":"history","logging-call-at":"service.go:91"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"Replication task fetchers started.","logging-call-at":"task_fetcher.go:142"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"none","component":"shard-controller","address":"127.0.0.1:54151","lifecycle":"Started","logging-call-at":"controller_impl.go:136"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"Starting to serve on history listener","service":"history","logging-call-at":"service.go:103"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.100+0900","msg":"Membership heartbeat upserted successfully","address":"127.0.0.1","port":54152,"hostId":"38fe63e8-9c86-11ee-b0ef-5a16eb2ad7bb","logging-call-at":"monitor.go:256"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.100+0900","msg":"sequential scheduler started","logging-call-at":"sequential_scheduler.go:96"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.100+0900","msg":"bootstrap hosts fetched","bootstrap-hostports":"127.0.0.1:54152,127.0.0.1:54154,127.0.0.1:54150,127.0.0.1:54156","logging-call-at":"monitor.go:298"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Current reachable members","component":"service-resolver","service":"frontend","addresses":["127.0.0.1:7233"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Frontend is now healthy","service":"frontend","logging-call-at":"workflow_handler.go:218"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Current reachable members","component":"service-resolver","service":"worker","addresses":["127.0.0.1:54155"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Current reachable members","component":"service-resolver","service":"matching","addresses":["127.0.0.1:54153"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Current reachable members","component":"service-resolver","service":"history","addresses":["127.0.0.1:54151"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"none","component":"shard-controller","address":"127.0.0.1:54151","component":"shard-controller","address":"127.0.0.1:54151","shard-update":"RingMembershipChangedEvent","number-processed":1,"number-deleted":0,"logging-call-at":"ownership.go:116"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","lifecycle":"Started","component":"shard-context","logging-call-at":"context_impl.go:1482"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"none","component":"shard-controller","address":"127.0.0.1:54151","numShards":1,"logging-call-at":"controller_impl.go:286"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Current reachable members","component":"service-resolver","service":"matching","addresses":["127.0.0.1:54153"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Current reachable members","component":"service-resolver","service":"history","addresses":["127.0.0.1:54151"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Range updated for shardID","shard-id":1,"address":"127.0.0.1:54151","shard-range-id":1,"previous-shard-range-id":0,"number":0,"next-number":0,"logging-call-at":"context_impl.go:1147"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Acquired shard","shard-id":1,"address":"127.0.0.1:54151","logging-call-at":"context_impl.go:1839"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","lifecycle":"Starting","component":"shard-engine","logging-call-at":"context_impl.go:1358"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"history-engine","lifecycle":"Starting","logging-call-at":"history_engine.go:286"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"visibility-queue-processor","lifecycle":"Starting","logging-call-at":"queue_immediate.go:114"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Task rescheduler started.","shard-id":1,"address":"127.0.0.1:54151","component":"visibility-queue-processor","lifecycle":"Started","logging-call-at":"rescheduler.go:124"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"visibility-queue-processor","lifecycle":"Started","logging-call-at":"queue_immediate.go:123"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","lifecycle":"Starting","logging-call-at":"queue_immediate.go:114"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Task rescheduler started.","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","lifecycle":"Started","logging-call-at":"rescheduler.go:124"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","lifecycle":"Started","logging-call-at":"queue_immediate.go:123"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"timer-queue-processor","lifecycle":"Starting","logging-call-at":"queue_scheduled.go:154"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Task rescheduler started.","shard-id":1,"address":"127.0.0.1:54151","component":"timer-queue-processor","lifecycle":"Started","logging-call-at":"rescheduler.go:124"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"timer-queue-processor","lifecycle":"Started","logging-call-at":"queue_scheduled.go:163"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","service":"history","component":"memory-scheduled-queue-processor","lifecycle":"Starting","logging-call-at":"memory_scheduled_queue.go:103"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","service":"history","component":"memory-scheduled-queue-processor","lifecycle":"Started","logging-call-at":"memory_scheduled_queue.go:108"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"queue reader started","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","queue-reader-id":0,"lifecycle":"Started","logging-call-at":"reader.go:182"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"queue reader started","shard-id":1,"address":"127.0.0.1:54151","component":"visibility-queue-processor","queue-reader-id":0,"lifecycle":"Started","logging-call-at":"reader.go:182"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"history-engine","lifecycle":"Started","logging-call-at":"history_engine.go:295"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","lifecycle":"Started","component":"shard-engine","logging-call-at":"context_impl.go:1361"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"queue reader started","shard-id":1,"address":"127.0.0.1:54151","component":"timer-queue-processor","queue-reader-id":0,"lifecycle":"Started","logging-call-at":"reader.go:182"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.115+0900","msg":"history client encountered error","service":"frontend","error":"Not enough hosts to serve the request","service-error-type":"serviceerror.Unavailable","logging-call-at":"metric_client.go:104"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.115+0900","msg":"history client encountered error","service":"frontend","error":"Not enough hosts to serve the request","service-error-type":"serviceerror.Unavailable","logging-call-at":"metric_client.go:104"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.149+0900","msg":"Current reachable members","component":"service-resolver","service":"history","addresses":["127.0.0.1:54151"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.149+0900","msg":"Current reachable members","component":"service-resolver","service":"worker","addresses":["127.0.0.1:54155"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.149+0900","msg":"Current reachable members","component":"service-resolver","service":"frontend","addresses":["127.0.0.1:7233"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.157+0900","msg":"history client encountered error","service":"frontend","error":"Not enough hosts to serve the request","service-error-type":"serviceerror.Unavailable","logging-call-at":"metric_client.go:104"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.160+0900","msg":"Current reachable members","component":"service-resolver","service":"worker","addresses":["127.0.0.1:54155"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.160+0900","msg":"Current reachable members","component":"service-resolver","service":"history","addresses":["127.0.0.1:54151"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.160+0900","msg":"Current reachable members","component":"service-resolver","service":"matching","addresses":["127.0.0.1:54153"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.172+0900","msg":"temporal-sys-tq-scanner-workflow workflow successfully started","service":"worker","logging-call-at":"scanner.go:292"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.252+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-tq-scanner-taskqueue-0","WorkerID":"77691@AL02274473.local@","logging-call-at":"scanner.go:239"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-history-scanner-taskqueue-0","WorkerID":"77691@AL02274473.local@","logging-call-at":"scanner.go:239"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-tq-scanner-taskqueue-0/1","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-tq-scanner-taskqueue-0","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-tq-scanner-taskqueue-0","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:9bb681fa-79ea-4e24-916e-bda748ced0c9","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-tq-scanner-taskqueue-0/3","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:1200bbcd-7968-4494-a7fe-51581c28e277","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/2","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-history-scanner-taskqueue-0","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-tq-scanner-taskqueue-0/2","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-tq-scanner-taskqueue-0/2","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-processor-parent-close-policy","WorkerID":"77691@AL02274473.local@","logging-call-at":"processor.go:98"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:d378c6ea-59c4-42a7-b11c-85ecbf43fe36","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-processor-parent-close-policy","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/1","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.259+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-processor-parent-close-policy","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.259+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-history-scanner-taskqueue-0","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.259+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-batcher-taskqueue","WorkerID":"77691@AL02274473.local@","logging-call-at":"batcher.go:98"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.259+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/1","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.260+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:6a007a8d-f13b-475c-85d9-2eb12b7d0422","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.260+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-processor-parent-close-policy/2","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.260+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-batcher-taskqueue","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.261+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-batcher-taskqueue/2","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.261+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-batcher-taskqueue/1","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.261+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-batcher-taskqueue/2","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:9d2ca059-7933-4312-b864-d839848e6a10","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-processor-parent-close-policy/1","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"default-worker-tq","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"default-worker-tq","WorkerID":"77691@AL02274473.local@","logging-call-at":"worker.go:101"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","component":"worker-manager","lifecycle":"Started","logging-call-at":"worker.go:106"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","component":"perns-worker-manager","lifecycle":"Starting","logging-call-at":"pernamespaceworker.go:166"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","component":"perns-worker-manager","lifecycle":"Started","logging-call-at":"pernamespaceworker.go:177"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"worker service started","service":"worker","component":"worker","address":"127.0.0.1:54155","logging-call-at":"service.go:418"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.263+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/3","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.263+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/3","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.263+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/default-worker-tq/3","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.263+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-batcher-taskqueue","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.264+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"default-worker-tq","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"Started Worker","service":"worker","Namespace":"default","TaskQueue":"temporal-sys-per-ns-tq","WorkerID":"server-worker@77691@AL02274473.local@default","logging-call-at":"pernamespaceworker.go:483"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:aa127cac-ab95-421d-b57c-414c59085ba4","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-per-ns-tq","WorkerID":"server-worker@77691@AL02274473.local@temporal-system","logging-call-at":"pernamespaceworker.go:483"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:a98eb4b4-78d5-406b-b930-94b171de79f9","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-per-ns-tq","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-per-ns-tq","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-per-ns-tq","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-per-ns-tq","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:39.355+0900","msg":"temporal-sys-history-scanner-workflow workflow successfully started","service":"worker","logging-call-at":"scanner.go:292"}
+[worker] 
+[worker] > temporal-money-transfer@0.1.0 worker
+[worker] > ts-node src/worker.ts
+[worker] 
+[worker] DEBUG: /Users/swcho/projects/swcho/money-transfer-project-example/src/activities.ts
+[worker] [35m2023-12-17T02:44:41.520Z[39m [INFO] Creating worker {
+[worker]   options: {
+[worker]     namespace: [32m'default'[39m,
+[worker]     identity: [32m'77737@AL02274473.local'[39m,
+[worker]     useVersioning: [33mfalse[39m,
+[worker]     buildId: [90mundefined[39m,
+[worker]     shutdownGraceTime: [33m0[39m,
+[worker]     maxConcurrentLocalActivityExecutions: [33m100[39m,
+[worker]     enableNonLocalActivities: [33mtrue[39m,
+[worker]     maxConcurrentWorkflowTaskPolls: [33m10[39m,
+[worker]     maxConcurrentActivityTaskPolls: [33m10[39m,
+[worker]     stickyQueueScheduleToStartTimeout: [32m'10s'[39m,
+[worker]     maxHeartbeatThrottleInterval: [32m'60s'[39m,
+[worker]     defaultHeartbeatThrottleInterval: [32m'30s'[39m,
+[worker]     isolateExecutionTimeout: [32m'4294967295ms'[39m,
+[worker]     workflowThreadPoolSize: [33m2[39m,
+[worker]     maxCachedWorkflows: [33m914[39m,
+[worker]     enableSDKTracing: [33mfalse[39m,
+[worker]     showStackTraceSources: [33mfalse[39m,
+[worker]     reuseV8Context: [33mfalse[39m,
+[worker]     debugMode: [33mtrue[39m,
+[worker]     interceptors: { workflowModules: [36m[Array][39m, activityInbound: [36m[Array][39m },
+[worker]     sinks: { defaultWorkerLogger: [36m[Object][39m, exporter: [36m[Object][39m },
+[worker]     workflowsPath: [32m'/Users/swcho/projects/swcho/money-transfer-project-example/src/workflows.ts'[39m,
+[worker]     activities: {
+[worker]       withdraw: [36m[AsyncFunction: withdraw][39m,
+[worker]       deposit: [36m[AsyncFunction: deposit][39m,
+[worker]       refund: [36m[AsyncFunction: refund][39m
+[worker]     },
+[worker]     taskQueue: [32m'money-transfer'[39m,
+[worker]     maxConcurrentWorkflowTaskExecutions: [33m40[39m,
+[worker]     maxConcurrentActivityTaskExecutions: [33m100[39m,
+[worker]     shutdownGraceTimeMs: [33m0[39m,
+[worker]     shutdownForceTimeMs: [90mundefined[39m,
+[worker]     stickyQueueScheduleToStartTimeoutMs: [33m10000[39m,
+[worker]     isolateExecutionTimeoutMs: [33m4294967295[39m,
+[worker]     maxHeartbeatThrottleIntervalMs: [33m60000[39m,
+[worker]     defaultHeartbeatThrottleIntervalMs: [33m30000[39m,
+[worker]     loadedDataConverter: {
+[worker]       payloadConverter: [36m[DefaultPayloadConverter][39m,
+[worker]       failureConverter: [36m[DefaultFailureConverter][39m,
+[worker]       payloadCodecs: []
+[worker]     }
+[worker]   }
+[worker] }
+[client] 
+[client] > temporal-money-transfer@0.1.0 client
+[client] > ts-node src/client.ts
+[client] 
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] asset [1m[32mworkflow-bundle-a6218372a8d3b09e32a4.js[39m[22m 2.49 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] orphan modules 39 KiB [1m[33m[orphan][39m[22m 33 modules
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] runtime modules 1.13 KiB 5 modules
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] modules by path [1m./node_modules/[39m[22m 737 KiB
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   modules by path [1m./node_modules/@temporalio/[39m[22m 382 KiB
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]     modules by path [1m./node_modules/@temporalio/common/[39m[22m 175 KiB 68 modules
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]     modules by path [1m./node_modules/@temporalio/interceptors-opentelemetry/[39m[22m 105 KiB 51 modules
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]     modules by path [1m./node_modules/@temporalio/workflow/[39m[22m 102 KiB 14 modules
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   modules by path [1m./node_modules/@opentelemetry/[39m[22m 311 KiB 117 modules
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   [1m./node_modules/long/umd/index.js[39m[22m 43.1 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] modules by path [1m./src/[39m[22m 2.78 KiB
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   [1m./src/workflows-autogenerated-entrypoint.cjs[39m[22m 494 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   [1m./src/workflows.ts[39m[22m 2.3 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] [1m__temporal_custom_payload_converter (ignored)[39m[22m 15 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] [1m__temporal_custom_failure_converter (ignored)[39m[22m 15 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] webpack 5.88.2 compiled [1m[32msuccessfully[39m[22m in 678 ms
+[worker] [35m2023-12-17T02:44:42.348Z[39m [INFO] Workflow bundle created { size: [32m'2.49MB'[39m }
+[worker] [2m2023-12-17T02:44:42.464147Z[0m [32m INFO[0m [2mtemporal_sdk_core::worker[0m[2m:[0m Initializing worker [3mtask_queue[0m[2m=[0mmoney-transfer [3mnamespace[0m[2m=[0mdefault
+[worker] [35m2023-12-17T02:44:42.464Z[39m [INFO] Worker state changed { state: [32m'RUNNING'[39m }
+[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"77737@AL02274473.local-8d19c00465aa4b71924d1de4eb2ad606","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/1","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/3","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"money-transfer","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/2","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/1","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[server] {"level":"info","ts":"2023-12-17T11:44:42.469+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"money-transfer","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[client] D 2023-12-17T02:44:43.343Z | index | Loading @grpc/grpc-js version 1.7.3
+[client] DEBUG: /Users/swcho/projects/swcho/money-transfer-project-example/src/workflows.ts
+[client] D 2023-12-17T02:44:43.514Z | resolving_load_balancer | dns:127.0.0.1:7233 IDLE -> IDLE
+[client] D 2023-12-17T02:44:43.514Z | connectivity_state | (1) dns:127.0.0.1:7233 IDLE -> IDLE
+[client] D 2023-12-17T02:44:43.514Z | dns_resolver | Resolver constructed for target dns:127.0.0.1:7233
+[client] D 2023-12-17T02:44:43.514Z | channel | (1) dns:127.0.0.1:7233 Channel constructed with options {
+[client]   "grpc.keepalive_permit_without_calls": 1,
+[client]   "grpc.keepalive_time_ms": 30000,
+[client]   "grpc.keepalive_timeout_ms": 15000
+[client] }
+[client] D 2023-12-17T02:44:43.519Z | channel_stacktrace | (1) Channel constructed 
+[client]     at new ChannelImplementation (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@grpc/grpc-js/src/channel.ts:367:19)
+[client]     at new Client (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@grpc/grpc-js/src/client.ts:157:30)
+[client]     at new ServiceClientImpl (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@grpc/grpc-js/src/make-client.ts:129:3)
+[client]     at Function.createCtorOptions (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@temporalio/client/src/connection.ts:219:20)
+[client]     at Function.lazy (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@temporalio/client/src/connection.ts:299:26)
+[client]     at Function.connect (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@temporalio/client/src/connection.ts:309:23)
+[client]     at run (/Users/swcho/projects/swcho/money-transfer-project-example/src/client.ts:35:39)
+[client]     at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[client] D 2023-12-17T02:44:43.550Z | dns_resolver | Returning IP address for target dns:127.0.0.1:7233
+[client] D 2023-12-17T02:44:43.551Z | resolving_load_balancer | dns:127.0.0.1:7233 IDLE -> CONNECTING
+[client] D 2023-12-17T02:44:43.551Z | connectivity_state | (1) dns:127.0.0.1:7233 IDLE -> CONNECTING
+[client] D 2023-12-17T02:44:43.551Z | pick_first | Connect to address list 127.0.0.1:7233
+[client] D 2023-12-17T02:44:43.552Z | subchannel | (2) 127.0.0.1:7233 Subchannel constructed with options {
+[client]   "grpc.keepalive_permit_without_calls": 1,
+[client]   "grpc.keepalive_time_ms": 30000,
+[client]   "grpc.keepalive_timeout_ms": 15000
+[client] }
+[client] D 2023-12-17T02:44:43.552Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 0 -> 1
+[client] D 2023-12-17T02:44:43.552Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 1 -> 2
+[client] D 2023-12-17T02:44:43.552Z | pick_first | Start connecting to subchannel with address 127.0.0.1:7233
+[client] D 2023-12-17T02:44:43.552Z | pick_first | IDLE -> CONNECTING
+[client] D 2023-12-17T02:44:43.552Z | resolving_load_balancer | dns:127.0.0.1:7233 CONNECTING -> CONNECTING
+[client] D 2023-12-17T02:44:43.552Z | connectivity_state | (1) dns:127.0.0.1:7233 CONNECTING -> CONNECTING
+[client] D 2023-12-17T02:44:43.552Z | subchannel | (2) 127.0.0.1:7233 IDLE -> CONNECTING
+[client] D 2023-12-17T02:44:43.552Z | pick_first | CONNECTING -> CONNECTING
+[client] D 2023-12-17T02:44:43.552Z | resolving_load_balancer | dns:127.0.0.1:7233 CONNECTING -> CONNECTING
+[client] D 2023-12-17T02:44:43.552Z | connectivity_state | (1) dns:127.0.0.1:7233 CONNECTING -> CONNECTING
+[client] D 2023-12-17T02:44:43.553Z | subchannel | (2) 127.0.0.1:7233 creating HTTP/2 session
+[client] D 2023-12-17T02:44:43.557Z | subchannel | (2) 127.0.0.1:7233 CONNECTING -> READY
+[client] D 2023-12-17T02:44:43.557Z | pick_first | Pick subchannel with address 127.0.0.1:7233
+[client] D 2023-12-17T02:44:43.557Z | pick_first | CONNECTING -> READY
+[client] D 2023-12-17T02:44:43.557Z | resolving_load_balancer | dns:127.0.0.1:7233 CONNECTING -> READY
+[client] D 2023-12-17T02:44:43.557Z | connectivity_state | (1) dns:127.0.0.1:7233 CONNECTING -> READY
+[client] D 2023-12-17T02:44:43.557Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 2 -> 3
+[client] D 2023-12-17T02:44:43.557Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 3 -> 2
+[client] D 2023-12-17T02:44:43.559Z | channel | (1) dns:127.0.0.1:7233 createCall [0] method="/temporal.api.workflowservice.v1.WorkflowService/GetSystemInfo", deadline=1702781093548
+[client] D 2023-12-17T02:44:43.559Z | call_stream | [0] Sending metadata
+[client] D 2023-12-17T02:44:43.560Z | channel | (1) dns:127.0.0.1:7233 Pick result for call [0]: COMPLETE subchannel: (2) 127.0.0.1:7233 status: undefined undefined
+[client] GRPC.sendMessage <Buffer >
+[client] D 2023-12-17T02:44:43.560Z | call_stream | [0] write() called with message of length 0
+[client] D 2023-12-17T02:44:43.560Z | call_stream | [0] end() called
+[client] D 2023-12-17T02:44:43.561Z | call_stream | Starting stream [0] on subchannel (2) 127.0.0.1:7233 with headers
+[client] 		client-name: temporal-typescript
+[client] 		client-version: 1.8.6
+[client] 		grpc-timeout: 9988m
+[client] 		grpc-accept-encoding: identity,deflate,gzip
+[client] 		accept-encoding: identity
+[client] 		:authority: 127.0.0.1:7233
+[client] 		user-agent: grpc-node-js/1.7.3
+[client] 		content-type: application/grpc
+[client] 		:method: POST
+[client] 		:path: /temporal.api.workflowservice.v1.WorkflowService/GetSystemInfo
+[client] 		te: trailers
+[client] 
+[client] D 2023-12-17T02:44:43.561Z | subchannel_flowctrl | (2) 127.0.0.1:7233 local window size: 65535 remote window size: 65535
+[client] D 2023-12-17T02:44:43.561Z | subchannel_internals | (2) 127.0.0.1:7233 session.closed=false session.destroyed=false session.socket.destroyed=false
+[client] D 2023-12-17T02:44:43.562Z | call_stream | [0] attachHttp2Stream from subchannel 127.0.0.1:7233
+[client] D 2023-12-17T02:44:43.562Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 0 -> 1
+[client] D 2023-12-17T02:44:43.562Z | call_stream | [0] sending data chunk of length 5
+[client] D 2023-12-17T02:44:43.562Z | call_stream | [0] calling end() on HTTP/2 stream
+[client] D 2023-12-17T02:44:43.563Z | subchannel | (2) 127.0.0.1:7233 new settings received: {"headerTableSize":4096,"enablePush":true,"initialWindowSize":65535,"maxFrameSize":16384,"maxConcurrentStreams":4294967295,"maxHeaderListSize":4294967295,"maxHeaderSize":4294967295,"enableConnectProtocol":false}
+[client] D 2023-12-17T02:44:43.563Z | subchannel | (2) 127.0.0.1:7233 local settings acknowledged by remote: {"headerTableSize":4096,"enablePush":true,"initialWindowSize":65535,"maxFrameSize":16384,"maxConcurrentStreams":4294967295,"maxHeaderListSize":4294967295,"maxHeaderSize":4294967295,"enableConnectProtocol":false}
+[client] D 2023-12-17T02:44:43.563Z | call_stream | [0] Received server headers:
+[client] 		:status: 200
+[client] 		content-type: application/grpc
+[client] 
+[client] D 2023-12-17T02:44:43.563Z | call_stream | [0] receive HTTP/2 data frame of length 35
+[client] D 2023-12-17T02:44:43.563Z | call_stream | [0] parsed message of length 35
+[client] D 2023-12-17T02:44:43.563Z | call_stream | [0] filterReceivedMessage of length 35
+[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] pushing to reader message of length 30
+[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] Received server trailers:
+[client] 		grpc-status: 0
+[client] 		grpc-message: 
+[client] 
+[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] received status code 0 from server
+[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] received status details string "" from server
+[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] close http2 stream with code 0
+[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] ended with status: code=0 details=""
+[client] D 2023-12-17T02:44:43.564Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 1 -> 0
+[client] D 2023-12-17T02:44:43.565Z | call_stream | [0] HTTP/2 stream closed with code 0
+[client] Starting transfer from account 85-150 to account 43-812 for $400
+[client] D 2023-12-17T02:44:43.570Z | channel | (1) dns:127.0.0.1:7233 createCall [1] method="/temporal.api.workflowservice.v1.WorkflowService/StartWorkflowExecution", deadline=Infinity
+[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] Sending metadata
+[client] D 2023-12-17T02:44:43.570Z | channel | (1) dns:127.0.0.1:7233 Pick result for call [1]: COMPLETE subchannel: (2) 127.0.0.1:7233 status: undefined undefined
+[client] GRPC.sendMessage <Buffer 0a 07 64 65 66 61 75 6c 74 12 0f 70 61 79 2d 69 6e 76 6f 69 63 65 2d 38 30 31 1a 0f 0a 0d 6d 6f 6e 65 79 54 72 61 6e 73 66 65 72 22 12 0a 0e 6d 6f 6e ... 240 more bytes>
+[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] write() called with message of length 290
+[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] end() called
+[client] D 2023-12-17T02:44:43.570Z | call_stream | Starting stream [1] on subchannel (2) 127.0.0.1:7233 with headers
+[client] 		client-name: temporal-typescript
+[client] 		client-version: 1.8.6
+[client] 		grpc-accept-encoding: identity,deflate,gzip
+[client] 		accept-encoding: identity
+[client] 		:authority: 127.0.0.1:7233
+[client] 		user-agent: grpc-node-js/1.7.3
+[client] 		content-type: application/grpc
+[client] 		:method: POST
+[client] 		:path: /temporal.api.workflowservice.v1.WorkflowService/StartWorkflowExecution
+[client] 		te: trailers
+[client] 
+[client] D 2023-12-17T02:44:43.570Z | subchannel_flowctrl | (2) 127.0.0.1:7233 local window size: 65500 remote window size: 65535
+[client] D 2023-12-17T02:44:43.570Z | subchannel_internals | (2) 127.0.0.1:7233 session.closed=false session.destroyed=false session.socket.destroyed=false
+[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] attachHttp2Stream from subchannel 127.0.0.1:7233
+[client] D 2023-12-17T02:44:43.570Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 0 -> 1
+[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] sending data chunk of length 295
+[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] calling end() on HTTP/2 stream
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] Received server headers:
+[client] 		:status: 200
+[client] 		content-type: application/grpc
+[client] 
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] receive HTTP/2 data frame of length 43
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] parsed message of length 43
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] filterReceivedMessage of length 43
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] pushing to reader message of length 38
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] Received server trailers:
+[client] 		grpc-status: 0
+[client] 		grpc-message: 
+[client] 
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] received status code 0 from server
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] received status details string "" from server
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] close http2 stream with code 0
+[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] ended with status: code=0 details=""
+[client] D 2023-12-17T02:44:43.572Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 1 -> 0
+[server] {"level":"info","ts":"2023-12-17T11:44:43.572+0900","msg":"matching client encountered error","service":"history","error":"Not enough hosts to serve the request","service-error-type":"serviceerror.Unavailable","logging-call-at":"metric_client.go:219"}
+[server] {"level":"error","ts":"2023-12-17T11:44:43.573+0900","msg":"Fail to process task","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","wf-namespace-id":"712a0e48-608f-4a3c-94bc-af67838db755","wf-id":"pay-invoice-801","wf-run-id":"39f03246-6a6d-40d5-8e96-104cf4a5fe48","queue-task-id":1048591,"queue-task-visibility-timestamp":"2023-12-17T02:44:43.571Z","queue-task-type":"TransferWorkflowTask","queue-task":{"NamespaceID":"712a0e48-608f-4a3c-94bc-af67838db755","WorkflowID":"pay-invoice-801","RunID":"39f03246-6a6d-40d5-8e96-104cf4a5fe48","VisibilityTimestamp":"2023-12-17T02:44:43.571524Z","TaskID":1048591,"TaskQueue":"money-transfer","ScheduledEventID":2,"Version":0},"wf-history-event-id":2,"error":"Not enough hosts to serve the request","lifecycle":"ProcessingFailed","logging-call-at":"lazy_logger.go:68","stacktrace":"go.temporal.io/server/common/log.(*zapLogger).Error\n\tgo.temporal.io/server@v1.22.0/common/log/zap_logger.go:156\ngo.temporal.io/server/common/log.(*lazyLogger).Error\n\tgo.temporal.io/server@v1.22.0/common/log/lazy_logger.go:68\ngo.temporal.io/server/service/history/queues.(*executableImpl).HandleErr\n\tgo.temporal.io/server@v1.22.0/service/history/queues/executable.go:347\ngo.temporal.io/server/common/tasks.(*FIFOScheduler[...]).executeTask.func1\n\tgo.temporal.io/server@v1.22.0/common/tasks/fifo_scheduler.go:224\ngo.temporal.io/server/common/backoff.ThrottleRetry.func1\n\tgo.temporal.io/server@v1.22.0/common/backoff/retry.go:119\ngo.temporal.io/server/common/backoff.ThrottleRetryContext\n\tgo.temporal.io/server@v1.22.0/common/backoff/retry.go:145\ngo.temporal.io/server/common/backoff.ThrottleRetry\n\tgo.temporal.io/server@v1.22.0/common/backoff/retry.go:120\ngo.temporal.io/server/common/tasks.(*FIFOScheduler[...]).executeTask\n\tgo.temporal.io/server@v1.22.0/common/tasks/fifo_scheduler.go:233\ngo.temporal.io/server/common/tasks.(*FIFOScheduler[...]).processTask\n\tgo.temporal.io/server@v1.22.0/common/tasks/fifo_scheduler.go:211"}
+[server] {"level":"info","ts":"2023-12-17T11:44:43.573+0900","msg":"Current reachable members","component":"service-resolver","service":"matching","addresses":["127.0.0.1:54153"],"logging-call-at":"service_resolver.go:279"}
+[client] D 2023-12-17T02:44:43.573Z | call_stream | [1] HTTP/2 stream closed with code 0
+[client] Started Workflow pay-invoice-801 with RunID 39f03246-6a6d-40d5-8e96-104cf4a5fe48
+[client] D 2023-12-17T02:44:43.574Z | channel | (1) dns:127.0.0.1:7233 createCall [2] method="/temporal.api.workflowservice.v1.WorkflowService/GetWorkflowExecutionHistory", deadline=Infinity
+[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] Sending metadata
+[client] D 2023-12-17T02:44:43.574Z | channel | (1) dns:127.0.0.1:7233 Pick result for call [2]: COMPLETE subchannel: (2) 127.0.0.1:7233 status: undefined undefined
+[client] GRPC.sendMessage <Buffer 0a 07 64 65 66 61 75 6c 74 12 37 0a 0f 70 61 79 2d 69 6e 76 6f 69 63 65 2d 38 30 31 12 24 33 39 66 30 33 32 34 36 2d 36 61 36 64 2d 34 30 64 35 2d 38 ... 22 more bytes>
+[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] write() called with message of length 72
+[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] end() called
+[client] D 2023-12-17T02:44:43.574Z | call_stream | Starting stream [2] on subchannel (2) 127.0.0.1:7233 with headers
+[client] 		client-name: temporal-typescript
+[client] 		client-version: 1.8.6
+[client] 		grpc-accept-encoding: identity,deflate,gzip
+[client] 		accept-encoding: identity
+[client] 		:authority: 127.0.0.1:7233
+[client] 		user-agent: grpc-node-js/1.7.3
+[client] 		content-type: application/grpc
+[client] 		:method: POST
+[client] 		:path: /temporal.api.workflowservice.v1.WorkflowService/GetWorkflowExecutionHistory
+[client] 		te: trailers
+[client] 
+[client] D 2023-12-17T02:44:43.574Z | subchannel_flowctrl | (2) 127.0.0.1:7233 local window size: 65457 remote window size: 65535
+[client] D 2023-12-17T02:44:43.574Z | subchannel_internals | (2) 127.0.0.1:7233 session.closed=false session.destroyed=false session.socket.destroyed=false
+[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] attachHttp2Stream from subchannel 127.0.0.1:7233
+[client] D 2023-12-17T02:44:43.574Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 0 -> 1
+[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] sending data chunk of length 77
+[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] calling end() on HTTP/2 stream
+[worker] [moneyTransfer(pay-invoice-801)] DEBUG: /index.js
+[server] {"level":"info","ts":"2023-12-17T11:44:43.629+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/3","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
+[worker] Withdrawing $400 from account 85-150.
+[worker] 
+[worker] 
+[worker] {
+[worker]   traceId: 'a0e170ad1e1ebfdb972a2a271cc99eae',
+[worker]   parentId: '5eb90bbb63918062',
+[worker]   traceState: undefined,
+[worker]   name: 'StartActivity:withdraw',
+[worker]   id: '67f5ef1683e7a6c9',
+[worker]   kind: 0,
+[worker]   timestamp: 1702781083579000,
+[worker]   duration: 56000,
+[worker]   attributes: {
+[worker]     workflowId: 'pay-invoice-801',
+[worker]     runId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     workflowType: 'moneyTransfer',
+[worker]     searchAttributes: {},
+[worker]     memo: undefined,
+[worker]     parent: undefined,
+[worker]     lastResult: undefined,
+[worker]     lastFailure: undefined,
+[worker]     taskQueue: 'money-transfer',
+[worker]     namespace: 'default',
+[worker]     firstExecutionRunId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     continuedFromExecutionRunId: undefined,
+[worker]     startTime: 2023-12-17T02:44:43.571Z,
+[worker]     runStartTime: 2023-12-17T02:44:43.579Z,
+[worker]     executionTimeoutMs: undefined,
+[worker]     executionExpirationTime: undefined,
+[worker]     runTimeoutMs: undefined,
+[worker]     taskTimeoutMs: 10000,
+[worker]     retryPolicy: undefined,
+[worker]     attempt: 1,
+[worker]     cronSchedule: undefined,
+[worker]     cronScheduleToScheduleInterval: undefined,
+[worker]     historyLength: 9,
+[worker]     historySize: 1269,
+[worker]     continueAsNewSuggested: false,
+[worker]     unsafe: { now: [Function: now], isReplaying: false }
+[worker]   },
+[worker]   status: { code: 1 },
+[worker]   events: [],
+[worker]   links: []
+[worker] }
+[worker] Depositing $400 into account 43-812.
+[worker] 
+[worker] 
+[worker] {
+[worker]   traceId: 'a0e170ad1e1ebfdb972a2a271cc99eae',
+[worker]   parentId: '5eb90bbb63918062',
+[worker]   traceState: undefined,
+[worker]   name: 'StartActivity:deposit',
+[worker]   id: '6d0f0d396e8897ba',
+[worker]   kind: 0,
+[worker]   timestamp: 1702781083635000,
+[worker]   duration: 11000,
+[worker]   attributes: {
+[worker]     workflowId: 'pay-invoice-801',
+[worker]     runId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     workflowType: 'moneyTransfer',
+[worker]     searchAttributes: {},
+[worker]     memo: undefined,
+[worker]     parent: undefined,
+[worker]     lastResult: undefined,
+[worker]     lastFailure: undefined,
+[worker]     taskQueue: 'money-transfer',
+[worker]     namespace: 'default',
+[worker]     firstExecutionRunId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     continuedFromExecutionRunId: undefined,
+[worker]     startTime: 2023-12-17T02:44:43.571Z,
+[worker]     runStartTime: 2023-12-17T02:44:43.579Z,
+[worker]     executionTimeoutMs: undefined,
+[worker]     executionExpirationTime: undefined,
+[worker]     runTimeoutMs: undefined,
+[worker]     taskTimeoutMs: 10000,
+[worker]     retryPolicy: undefined,
+[worker]     attempt: 1,
+[worker]     cronSchedule: undefined,
+[worker]     cronScheduleToScheduleInterval: undefined,
+[worker]     historyLength: 15,
+[worker]     historySize: 2121,
+[worker]     continueAsNewSuggested: false,
+[worker]     unsafe: { now: [Function: now], isReplaying: false }
+[worker]   },
+[worker]   status: { code: 1 },
+[worker]   events: [],
+[worker]   links: []
+[worker] }
+[worker] {
+[worker]   traceId: 'a0e170ad1e1ebfdb972a2a271cc99eae',
+[worker]   parentId: undefined,
+[worker]   traceState: undefined,
+[worker]   name: 'RunWorkflow:moneyTransfer',
+[worker]   id: '5eb90bbb63918062',
+[worker]   kind: 0,
+[worker]   timestamp: 1702781083579000,
+[worker]   duration: 67000,
+[worker]   attributes: {
+[worker]     workflowId: 'pay-invoice-801',
+[worker]     runId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     workflowType: 'moneyTransfer',
+[worker]     searchAttributes: {},
+[worker]     memo: undefined,
+[worker]     parent: undefined,
+[worker]     lastResult: undefined,
+[worker]     lastFailure: undefined,
+[worker]     taskQueue: 'money-transfer',
+[worker]     namespace: 'default',
+[worker]     firstExecutionRunId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     continuedFromExecutionRunId: undefined,
+[worker]     startTime: 2023-12-17T02:44:43.571Z,
+[worker]     runStartTime: 2023-12-17T02:44:43.579Z,
+[worker]     executionTimeoutMs: undefined,
+[worker]     executionExpirationTime: undefined,
+[worker]     runTimeoutMs: undefined,
+[worker]     taskTimeoutMs: 10000,
+[worker]     retryPolicy: undefined,
+[worker]     attempt: 1,
+[worker]     cronSchedule: undefined,
+[worker]     cronScheduleToScheduleInterval: undefined,
+[worker]     historyLength: 15,
+[worker]     historySize: 2121,
+[worker]     continueAsNewSuggested: false,
+[worker]     unsafe: { now: [Function: now], isReplaying: false }
+[worker]   },
+[worker]   status: { code: 1 },
+[worker]   events: [],
+[worker]   links: []
+[worker] }
+[client] D 2023-12-17T02:44:43.652Z | call_stream | [2] Received server headers:
+[client] 		:status: 200
+[client] 		content-type: application/grpc
+[client] 
+[client] D 2023-12-17T02:44:43.652Z | call_stream | [2] receive HTTP/2 data frame of length 128
+[client] D 2023-12-17T02:44:43.652Z | call_stream | [2] parsed message of length 128
+[client] D 2023-12-17T02:44:43.652Z | call_stream | [2] filterReceivedMessage of length 128
+[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] pushing to reader message of length 123
+[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] Received server trailers:
+[client] 		grpc-status: 0
+[client] 		grpc-message: 
+[client] 
+[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] received status code 0 from server
+[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] received status details string "" from server
+[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] close http2 stream with code 0
+[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] ended with status: code=0 details=""
+[client] D 2023-12-17T02:44:43.653Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 1 -> 0
+[client] D 2023-12-17T02:44:43.657Z | call_stream | [2] HTTP/2 stream closed with code 0
+[client] Transfer complete (transaction IDs: W8145830144, D5618311997)
+[client] sleep 3 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run client exited with code 0
+[server] {"level":"info","ts":"2023-12-17T11:44:49.111+0900","msg":"Current reachable members","component":"service-resolver","service":"frontend","addresses":["127.0.0.1:7233"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:49.111+0900","msg":"Current reachable members","component":"service-resolver","service":"frontend","addresses":["127.0.0.1:7233"],"logging-call-at":"service_resolver.go:279"}
+[server] {"level":"info","ts":"2023-12-17T11:44:49.111+0900","msg":"Current reachable members","component":"service-resolver","service":"worker","addresses":["127.0.0.1:54155"],"logging-call-at":"service_resolver.go:279"}

@@ -1,13 +1,43 @@
 // @@@SNIPSTART money-transfer-project-template-ts-start-workflow
+
 import { Connection, WorkflowClient } from '@temporalio/client';
 import { moneyTransfer } from './workflows';
 import type { PaymentDetails } from './shared';
 
 import { namespace, taskQueueName } from './shared';
+import { Resource } from '@opentelemetry/resources';
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-base';
+import { OpenTelemetryWorkflowClientInterceptor } from '@temporalio/interceptors-opentelemetry';
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { InterceptingCall, Interceptor } from '@grpc/grpc-js';
+
+const interceptor: Interceptor = function(options, nextCall) {
+  return new InterceptingCall(nextCall(options), {
+      sendMessage(message, next) {
+          console.log('GRPC.sendMessage', message);
+          next(message);
+      }
+  });
+};
 
 async function run() {
-  const connection = await Connection.connect();
-  const client = new WorkflowClient({ connection, namespace });
+
+  const resource = new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: 'interceptors-sample-client',
+  });
+  // Export spans to console for simplicity
+  const exporter = new ConsoleSpanExporter();
+
+  const otel = new NodeSDK({ traceExporter: exporter, resource });
+  await otel.start();
+
+  const connection = await Connection.connect({
+    interceptors: [interceptor]
+  });
+  const client = new WorkflowClient({ connection, namespace, interceptors: [
+    new OpenTelemetryWorkflowClientInterceptor()
+  ] });
 
   const details: PaymentDetails = {
     amount: 400,
