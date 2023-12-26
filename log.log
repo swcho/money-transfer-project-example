@@ -1,16 +1,281 @@
 
 > temporal-money-transfer@0.1.0 execute
-> concurrently --names 'server,worker,client' -c 'blue,red,green' 'GRPC_VERBOSITY=DEBUG GRPC_TRACE=all temporal server start-dev' 'sleep 1 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run worker' 'sleep 3 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run client'
+> concurrently --names 'server,worker,client' -c 'blue,red,green' 'GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info temporal server start-dev --log-format pretty' 'sleep 1 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run worker' 'sleep 3 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run client'
 
-[server] {"level":"info","ts":"2023-12-17T11:44:39.078+0900","msg":"Use rpc address 127.0.0.1:7233 for cluster active.","component":"metadata-initializer","logging-call-at":"fx.go:736"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.082+0900","msg":"historyClient: ownership caching disabled","service":"history","logging-call-at":"client.go:82"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.083+0900","msg":"Created gRPC listener","service":"history","address":"127.0.0.1:54151","logging-call-at":"rpc.go:152"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.085+0900","msg":"Created gRPC listener","service":"matching","address":"127.0.0.1:54153","logging-call-at":"rpc.go:152"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.086+0900","msg":"historyClient: ownership caching disabled","service":"matching","logging-call-at":"client.go:82"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.089+0900","msg":"historyClient: ownership caching disabled","service":"frontend","logging-call-at":"client.go:82"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.089+0900","msg":"Created gRPC listener","service":"frontend","address":"127.0.0.1:7233","logging-call-at":"rpc.go:152"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.089+0900","msg":"Service is not requested, skipping initialization.","service":"internal-frontend","logging-call-at":"fx.go:477"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.091+0900","msg":"historyClient: ownership caching disabled","service":"worker","logging-call-at":"client.go:82"}
+[server] 2023-12-25T14:46:13.130+0900	[34mINFO[0m	Use rpc address 127.0.0.1:7233 for cluster active.	{"component": "metadata-initializer", "logging-call-at": "fx.go:736"}
+[server] 2023-12-25T14:46:13.135+0900	[34mINFO[0m	historyClient: ownership caching disabled	{"service": "history", "logging-call-at": "client.go:82"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] original dial target is: "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] dial target "127.0.0.1:7233" parse failed: parse "127.0.0.1:7233": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:7233 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] Channel authority set to "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:7233",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:7233", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1 SubChannel #2] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] original dial target is: "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] dial target "127.0.0.1:7233" parse failed: parse "127.0.0.1:7233": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:7233 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] Channel authority set to "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:7233",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:7233", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140009940f0, CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3 SubChannel #4] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1 SubChannel #2] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3 SubChannel #4] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3 SubChannel #4] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000cea108, CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] Creating new client transport to "{Addr: \"127.0.0.1:7233\", ServerName: \"127.0.0.1:7233\", }": connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 WARNING: [core] [Channel #3 SubChannel #4] grpc: addrConn.createTransport failed to connect to {Addr: "127.0.0.1:7233", ServerName: "127.0.0.1:7233", }. Err: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3 SubChannel #4] Subchannel Connectivity change to TRANSIENT_FAILURE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000cea108, TRANSIENT_FAILURE
+[server] 2023/12/25 14:46:13 INFO: [core] Creating new client transport to "{Addr: \"127.0.0.1:7233\", ServerName: \"127.0.0.1:7233\", }": connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 WARNING: [core] [Channel #1 SubChannel #2] grpc: addrConn.createTransport failed to connect to {Addr: "127.0.0.1:7233", ServerName: "127.0.0.1:7233", }. Err: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to TRANSIENT_FAILURE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140009940f0, TRANSIENT_FAILURE
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #3] Channel Connectivity change to TRANSIENT_FAILURE
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #1] Channel Connectivity change to TRANSIENT_FAILURE
+[server] 2023-12-25T14:46:13.136+0900	[34mINFO[0m	Created gRPC listener	{"service": "history", "address": "127.0.0.1:53274", "logging-call-at": "rpc.go:152"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Server #5] Server created
+[server] 2023-12-25T14:46:13.138+0900	[34mINFO[0m	Created gRPC listener	{"service": "matching", "address": "127.0.0.1:53276", "logging-call-at": "rpc.go:152"}
+[server] 2023-12-25T14:46:13.138+0900	[34mINFO[0m	historyClient: ownership caching disabled	{"service": "matching", "logging-call-at": "client.go:82"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] original dial target is: "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] dial target "127.0.0.1:7233" parse failed: parse "127.0.0.1:7233": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:7233 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] Channel authority set to "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:7233",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:7233", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6 SubChannel #7] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6 SubChannel #7] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6 SubChannel #7] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] original dial target is: "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] dial target "127.0.0.1:7233" parse failed: parse "127.0.0.1:7233": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaa68, CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:7233 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] Channel authority set to "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:7233",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:7233", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8 SubChannel #9] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] Creating new client transport to "{Addr: \"127.0.0.1:7233\", ServerName: \"127.0.0.1:7233\", }": connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 WARNING: [core] [Channel #6 SubChannel #7] grpc: addrConn.createTransport failed to connect to {Addr: "127.0.0.1:7233", ServerName: "127.0.0.1:7233", }. Err: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6 SubChannel #7] Subchannel Connectivity change to TRANSIENT_FAILURE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [core] [Server #10] Server created
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaa68, TRANSIENT_FAILURE
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #6] Channel Connectivity change to TRANSIENT_FAILURE
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8 SubChannel #9] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8 SubChannel #9] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaab0, CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] Creating new client transport to "{Addr: \"127.0.0.1:7233\", ServerName: \"127.0.0.1:7233\", }": connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 WARNING: [core] [Channel #8 SubChannel #9] grpc: addrConn.createTransport failed to connect to {Addr: "127.0.0.1:7233", ServerName: "127.0.0.1:7233", }. Err: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8 SubChannel #9] Subchannel Connectivity change to TRANSIENT_FAILURE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaab0, TRANSIENT_FAILURE
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #8] Channel Connectivity change to TRANSIENT_FAILURE
+[server] 2023-12-25T14:46:13.143+0900	[34mINFO[0m	historyClient: ownership caching disabled	{"service": "frontend", "logging-call-at": "client.go:82"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] original dial target is: "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] dial target "127.0.0.1:7233" parse failed: parse "127.0.0.1:7233": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:7233 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] Channel authority set to "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:7233",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:7233", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11 SubChannel #12] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] original dial target is: "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] dial target "127.0.0.1:7233" parse failed: parse "127.0.0.1:7233": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:7233 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] Channel authority set to "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:7233",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11 SubChannel #12] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11 SubChannel #12] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:7233", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13 SubChannel #14] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb128, CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13 SubChannel #14] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13 SubChannel #14] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb1b8, CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Server #15] Server created
+[server] 2023/12/25 14:46:13 INFO: [core] Creating new client transport to "{Addr: \"127.0.0.1:7233\", ServerName: \"127.0.0.1:7233\", }": connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 WARNING: [core] [Channel #11 SubChannel #12] grpc: addrConn.createTransport failed to connect to {Addr: "127.0.0.1:7233", ServerName: "127.0.0.1:7233", }. Err: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11 SubChannel #12] Subchannel Connectivity change to TRANSIENT_FAILURE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023-12-25T14:46:13.143+0900	[34mINFO[0m	Created gRPC listener	{"service": "frontend", "address": "127.0.0.1:7233", "logging-call-at": "rpc.go:152"}
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb128, TRANSIENT_FAILURE
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #11] Channel Connectivity change to TRANSIENT_FAILURE
+[server] 2023/12/25 14:46:13 INFO: [core] Creating new client transport to "{Addr: \"127.0.0.1:7233\", ServerName: \"127.0.0.1:7233\", }": connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 WARNING: [core] [Channel #13 SubChannel #14] grpc: addrConn.createTransport failed to connect to {Addr: "127.0.0.1:7233", ServerName: "127.0.0.1:7233", }. Err: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13 SubChannel #14] Subchannel Connectivity change to TRANSIENT_FAILURE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb1b8, TRANSIENT_FAILURE
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #13] Channel Connectivity change to TRANSIENT_FAILURE
+[server] 2023-12-25T14:46:13.144+0900	[34mINFO[0m	Service is not requested, skipping initialization.	{"service": "internal-frontend", "logging-call-at": "fx.go:477"}
+[server] 2023-12-25T14:46:13.146+0900	[34mINFO[0m	historyClient: ownership caching disabled	{"service": "worker", "logging-call-at": "client.go:82"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] original dial target is: "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] dial target "127.0.0.1:7233" parse failed: parse "127.0.0.1:7233": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:7233 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] Channel authority set to "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:7233",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:7233", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16 SubChannel #17] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16 SubChannel #17] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16 SubChannel #17] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] original dial target is: "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] dial target "127.0.0.1:7233" parse failed: parse "127.0.0.1:7233": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:7233 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] Channel authority set to "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:7233",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140005ab980, CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:7233", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18 SubChannel #19] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18 SubChannel #19] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18 SubChannel #19] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000994e70, CONNECTING
 [server] Starting UI server...
 [server] 
 [server]    ____    __
@@ -21,135 +286,331 @@
 [server] https://echo.labstack.com
 [server] ____________________________________O/_______
 [server]                                     O\
-[server] {"level":"info","ts":"2023-12-17T11:44:39.091+0900","msg":"Starting server for services","value":{"frontend":{},"history":{},"matching":{},"worker":{}},"logging-call-at":"server_impl.go:94"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.091+0900","msg":"PProf listen on ","port":54149,"logging-call-at":"pprof.go:73"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.093+0900","msg":"RuntimeMetricsReporter started","service":"worker","logging-call-at":"runtime.go:138"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.093+0900","msg":"worker starting","service":"worker","component":"worker","logging-call-at":"service.go:379"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"fifo scheduler started","service":"history","logging-call-at":"fifo_scheduler.go:96"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"interleaved weighted round robin task scheduler started","service":"history","logging-call-at":"interleaved_weighted_round_robin.go:197"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"RuntimeMetricsReporter started","service":"frontend","logging-call-at":"runtime.go:138"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"frontend starting","service":"frontend","logging-call-at":"service.go:336"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"Starting to serve on frontend listener","service":"frontend","logging-call-at":"service.go:355"}
+[server] 2023-12-25T14:46:13.146+0900	[34mINFO[0m	Starting server for services	{"value": {"frontend":{},"history":{},"matching":{},"worker":{}}, "logging-call-at": "server_impl.go:94"}
+[server] 2023-12-25T14:46:13.146+0900	[34mINFO[0m	PProf listen on 	{"port": 53272, "logging-call-at": "pprof.go:73"}
 [server] ⇨ http server started on 127.0.0.1:8233
-[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"Membership heartbeat upserted successfully","address":"127.0.0.1","port":54156,"hostId":"38fff2b2-9c86-11ee-b0ef-5a16eb2ad7bb","logging-call-at":"monitor.go:256"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"RuntimeMetricsReporter started","service":"matching","logging-call-at":"runtime.go:138"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.094+0900","msg":"matching starting","service":"matching","logging-call-at":"service.go:91"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.095+0900","msg":"Starting to serve on matching listener","service":"matching","logging-call-at":"service.go:104"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.095+0900","msg":"fifo scheduler started","service":"history","logging-call-at":"fifo_scheduler.go:96"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.095+0900","msg":"interleaved weighted round robin task scheduler started","service":"history","logging-call-at":"interleaved_weighted_round_robin.go:197"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.095+0900","msg":"fifo scheduler started","service":"history","component":"memory-scheduled-queue-processor","logging-call-at":"fifo_scheduler.go:96"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"fifo scheduler started","service":"history","logging-call-at":"fifo_scheduler.go:96"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"interleaved weighted round robin task scheduler started","service":"history","logging-call-at":"interleaved_weighted_round_robin.go:197"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"Membership heartbeat upserted successfully","address":"127.0.0.1","port":54150,"hostId":"38ff9484-9c86-11ee-b0ef-5a16eb2ad7bb","logging-call-at":"monitor.go:256"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"Membership heartbeat upserted successfully","address":"127.0.0.1","port":54154,"hostId":"38ff0c3a-9c86-11ee-b0ef-5a16eb2ad7bb","logging-call-at":"monitor.go:256"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.096+0900","msg":"bootstrap hosts fetched","bootstrap-hostports":"127.0.0.1:54154,127.0.0.1:54150,127.0.0.1:54156","logging-call-at":"monitor.go:298"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.097+0900","msg":"bootstrap hosts fetched","bootstrap-hostports":"127.0.0.1:54154,127.0.0.1:54150,127.0.0.1:54156","logging-call-at":"monitor.go:298"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.097+0900","msg":"bootstrap hosts fetched","bootstrap-hostports":"127.0.0.1:54156,127.0.0.1:54154,127.0.0.1:54150","logging-call-at":"monitor.go:298"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"RuntimeMetricsReporter started","service":"history","logging-call-at":"runtime.go:138"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"history starting","service":"history","logging-call-at":"service.go:91"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"Replication task fetchers started.","logging-call-at":"task_fetcher.go:142"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"none","component":"shard-controller","address":"127.0.0.1:54151","lifecycle":"Started","logging-call-at":"controller_impl.go:136"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.099+0900","msg":"Starting to serve on history listener","service":"history","logging-call-at":"service.go:103"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.100+0900","msg":"Membership heartbeat upserted successfully","address":"127.0.0.1","port":54152,"hostId":"38fe63e8-9c86-11ee-b0ef-5a16eb2ad7bb","logging-call-at":"monitor.go:256"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.100+0900","msg":"sequential scheduler started","logging-call-at":"sequential_scheduler.go:96"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.100+0900","msg":"bootstrap hosts fetched","bootstrap-hostports":"127.0.0.1:54152,127.0.0.1:54154,127.0.0.1:54150,127.0.0.1:54156","logging-call-at":"monitor.go:298"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Current reachable members","component":"service-resolver","service":"frontend","addresses":["127.0.0.1:7233"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Frontend is now healthy","service":"frontend","logging-call-at":"workflow_handler.go:218"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Current reachable members","component":"service-resolver","service":"worker","addresses":["127.0.0.1:54155"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Current reachable members","component":"service-resolver","service":"matching","addresses":["127.0.0.1:54153"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"Current reachable members","component":"service-resolver","service":"history","addresses":["127.0.0.1:54151"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"none","component":"shard-controller","address":"127.0.0.1:54151","component":"shard-controller","address":"127.0.0.1:54151","shard-update":"RingMembershipChangedEvent","number-processed":1,"number-deleted":0,"logging-call-at":"ownership.go:116"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","lifecycle":"Started","component":"shard-context","logging-call-at":"context_impl.go:1482"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.110+0900","msg":"none","component":"shard-controller","address":"127.0.0.1:54151","numShards":1,"logging-call-at":"controller_impl.go:286"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Current reachable members","component":"service-resolver","service":"matching","addresses":["127.0.0.1:54153"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Current reachable members","component":"service-resolver","service":"history","addresses":["127.0.0.1:54151"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Range updated for shardID","shard-id":1,"address":"127.0.0.1:54151","shard-range-id":1,"previous-shard-range-id":0,"number":0,"next-number":0,"logging-call-at":"context_impl.go:1147"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Acquired shard","shard-id":1,"address":"127.0.0.1:54151","logging-call-at":"context_impl.go:1839"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","lifecycle":"Starting","component":"shard-engine","logging-call-at":"context_impl.go:1358"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"history-engine","lifecycle":"Starting","logging-call-at":"history_engine.go:286"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"visibility-queue-processor","lifecycle":"Starting","logging-call-at":"queue_immediate.go:114"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Task rescheduler started.","shard-id":1,"address":"127.0.0.1:54151","component":"visibility-queue-processor","lifecycle":"Started","logging-call-at":"rescheduler.go:124"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"visibility-queue-processor","lifecycle":"Started","logging-call-at":"queue_immediate.go:123"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","lifecycle":"Starting","logging-call-at":"queue_immediate.go:114"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Task rescheduler started.","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","lifecycle":"Started","logging-call-at":"rescheduler.go:124"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","lifecycle":"Started","logging-call-at":"queue_immediate.go:123"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"timer-queue-processor","lifecycle":"Starting","logging-call-at":"queue_scheduled.go:154"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"Task rescheduler started.","shard-id":1,"address":"127.0.0.1:54151","component":"timer-queue-processor","lifecycle":"Started","logging-call-at":"rescheduler.go:124"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"timer-queue-processor","lifecycle":"Started","logging-call-at":"queue_scheduled.go:163"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","service":"history","component":"memory-scheduled-queue-processor","lifecycle":"Starting","logging-call-at":"memory_scheduled_queue.go:103"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","service":"history","component":"memory-scheduled-queue-processor","lifecycle":"Started","logging-call-at":"memory_scheduled_queue.go:108"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"queue reader started","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","queue-reader-id":0,"lifecycle":"Started","logging-call-at":"reader.go:182"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"queue reader started","shard-id":1,"address":"127.0.0.1:54151","component":"visibility-queue-processor","queue-reader-id":0,"lifecycle":"Started","logging-call-at":"reader.go:182"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","component":"history-engine","lifecycle":"Started","logging-call-at":"history_engine.go:295"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"none","shard-id":1,"address":"127.0.0.1:54151","lifecycle":"Started","component":"shard-engine","logging-call-at":"context_impl.go:1361"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.111+0900","msg":"queue reader started","shard-id":1,"address":"127.0.0.1:54151","component":"timer-queue-processor","queue-reader-id":0,"lifecycle":"Started","logging-call-at":"reader.go:182"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.115+0900","msg":"history client encountered error","service":"frontend","error":"Not enough hosts to serve the request","service-error-type":"serviceerror.Unavailable","logging-call-at":"metric_client.go:104"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.115+0900","msg":"history client encountered error","service":"frontend","error":"Not enough hosts to serve the request","service-error-type":"serviceerror.Unavailable","logging-call-at":"metric_client.go:104"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.149+0900","msg":"Current reachable members","component":"service-resolver","service":"history","addresses":["127.0.0.1:54151"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.149+0900","msg":"Current reachable members","component":"service-resolver","service":"worker","addresses":["127.0.0.1:54155"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.149+0900","msg":"Current reachable members","component":"service-resolver","service":"frontend","addresses":["127.0.0.1:7233"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.157+0900","msg":"history client encountered error","service":"frontend","error":"Not enough hosts to serve the request","service-error-type":"serviceerror.Unavailable","logging-call-at":"metric_client.go:104"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.160+0900","msg":"Current reachable members","component":"service-resolver","service":"worker","addresses":["127.0.0.1:54155"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.160+0900","msg":"Current reachable members","component":"service-resolver","service":"history","addresses":["127.0.0.1:54151"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.160+0900","msg":"Current reachable members","component":"service-resolver","service":"matching","addresses":["127.0.0.1:54153"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.172+0900","msg":"temporal-sys-tq-scanner-workflow workflow successfully started","service":"worker","logging-call-at":"scanner.go:292"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.252+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-tq-scanner-taskqueue-0","WorkerID":"77691@AL02274473.local@","logging-call-at":"scanner.go:239"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-history-scanner-taskqueue-0","WorkerID":"77691@AL02274473.local@","logging-call-at":"scanner.go:239"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-tq-scanner-taskqueue-0/1","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-tq-scanner-taskqueue-0","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-tq-scanner-taskqueue-0","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:9bb681fa-79ea-4e24-916e-bda748ced0c9","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-tq-scanner-taskqueue-0/3","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:1200bbcd-7968-4494-a7fe-51581c28e277","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.256+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/2","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-history-scanner-taskqueue-0","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-tq-scanner-taskqueue-0/2","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-tq-scanner-taskqueue-0/2","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-processor-parent-close-policy","WorkerID":"77691@AL02274473.local@","logging-call-at":"processor.go:98"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:d378c6ea-59c4-42a7-b11c-85ecbf43fe36","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-processor-parent-close-policy","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.258+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/1","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.259+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-processor-parent-close-policy","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.259+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-history-scanner-taskqueue-0","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.259+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-batcher-taskqueue","WorkerID":"77691@AL02274473.local@","logging-call-at":"batcher.go:98"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.259+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/1","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.260+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:6a007a8d-f13b-475c-85d9-2eb12b7d0422","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.260+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-processor-parent-close-policy/2","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.260+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-batcher-taskqueue","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.261+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-batcher-taskqueue/2","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.261+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-batcher-taskqueue/1","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.261+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-batcher-taskqueue/2","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:9d2ca059-7933-4312-b864-d839848e6a10","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-processor-parent-close-policy/1","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"default-worker-tq","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"default-worker-tq","WorkerID":"77691@AL02274473.local@","logging-call-at":"worker.go:101"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","component":"worker-manager","lifecycle":"Started","logging-call-at":"worker.go:106"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","component":"perns-worker-manager","lifecycle":"Starting","logging-call-at":"pernamespaceworker.go:166"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"none","component":"perns-worker-manager","lifecycle":"Started","logging-call-at":"pernamespaceworker.go:177"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.262+0900","msg":"worker service started","service":"worker","component":"worker","address":"127.0.0.1:54155","logging-call-at":"service.go:418"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.263+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/3","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.263+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/temporal-sys-history-scanner-taskqueue-0/3","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.263+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/default-worker-tq/3","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.263+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-batcher-taskqueue","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.264+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"default-worker-tq","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"Started Worker","service":"worker","Namespace":"default","TaskQueue":"temporal-sys-per-ns-tq","WorkerID":"server-worker@77691@AL02274473.local@default","logging-call-at":"pernamespaceworker.go:483"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:aa127cac-ab95-421d-b57c-414c59085ba4","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"Started Worker","service":"worker","Namespace":"temporal-system","TaskQueue":"temporal-sys-per-ns-tq","WorkerID":"server-worker@77691@AL02274473.local@temporal-system","logging-call-at":"pernamespaceworker.go:483"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"AL02274473.local:a98eb4b4-78d5-406b-b930-94b171de79f9","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-per-ns-tq","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-per-ns-tq","wf-task-queue-type":"Workflow","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-per-ns-tq","wf-task-queue-type":"Activity","wf-namespace":"temporal-system","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.265+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"temporal-sys-per-ns-tq","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:39.355+0900","msg":"temporal-sys-history-scanner-workflow workflow successfully started","service":"worker","logging-call-at":"scanner.go:292"}
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	RuntimeMetricsReporter started	{"service": "frontend", "logging-call-at": "runtime.go:138"}
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	frontend starting	{"service": "frontend", "logging-call-at": "service.go:336"}
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	RuntimeMetricsReporter started	{"service": "worker", "logging-call-at": "runtime.go:138"}
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	worker starting	{"service": "worker", "component": "worker", "logging-call-at": "service.go:379"}
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	RuntimeMetricsReporter started	{"service": "matching", "logging-call-at": "runtime.go:138"}
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	matching starting	{"service": "matching", "logging-call-at": "service.go:91"}
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	fifo scheduler started	{"service": "history", "logging-call-at": "fifo_scheduler.go:96"}
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	Starting to serve on matching listener	{"service": "matching", "logging-call-at": "service.go:104"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Server #10 ListenSocket #20] ListenSocket created
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	interleaved weighted round robin task scheduler started	{"service": "history", "logging-call-at": "interleaved_weighted_round_robin.go:197"}
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	Starting to serve on frontend listener	{"service": "frontend", "logging-call-at": "service.go:355"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Server #15 ListenSocket #21] ListenSocket created
+[server] 2023-12-25T14:46:13.148+0900	[34mINFO[0m	fifo scheduler started	{"service": "history", "component": "memory-scheduled-queue-processor", "logging-call-at": "fifo_scheduler.go:96"}
+[server] 2023/12/25 14:46:13 INFO: [core] CPU time info is unavailable on non-linux environments.
+[server] 2023-12-25T14:46:13.149+0900	[34mINFO[0m	Membership heartbeat upserted successfully	{"address": "127.0.0.1", "port": 53279, "hostId": "e9aac408-a2e8-11ee-b393-5a16eb2ad7bc", "logging-call-at": "monitor.go:256"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18 SubChannel #19] Subchannel Connectivity change to READY
+[server] 2023-12-25T14:46:13.150+0900	[34mINFO[0m	fifo scheduler started	{"service": "history", "logging-call-at": "fifo_scheduler.go:96"}
+[server] 2023-12-25T14:46:13.150+0900	[34mINFO[0m	interleaved weighted round robin task scheduler started	{"service": "history", "logging-call-at": "interleaved_weighted_round_robin.go:197"}
+[server] 2023-12-25T14:46:13.150+0900	[34mINFO[0m	fifo scheduler started	{"service": "history", "logging-call-at": "fifo_scheduler.go:96"}
+[server] 2023-12-25T14:46:13.150+0900	[34mINFO[0m	interleaved weighted round robin task scheduler started	{"service": "history", "logging-call-at": "interleaved_weighted_round_robin.go:197"}
+[server] 2023-12-25T14:46:13.151+0900	[34mINFO[0m	bootstrap hosts fetched	{"bootstrap-hostports": "127.0.0.1:53279", "logging-call-at": "monitor.go:298"}
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000994e70, READY
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:19):{{Addr: "127.0.0.1:7233", ServerName: "", }}]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #18] Channel Connectivity change to READY
+[server] 2023-12-25T14:46:13.152+0900	[34mINFO[0m	Membership heartbeat upserted successfully	{"address": "127.0.0.1", "port": 53273, "hostId": "e9aa5aa4-a2e8-11ee-b393-5a16eb2ad7bc", "logging-call-at": "monitor.go:256"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16 SubChannel #17] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140005ab980, READY
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:17):{{Addr: "127.0.0.1:7233", ServerName: "", }}]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #16] Channel Connectivity change to READY
+[server] 2023-12-25T14:46:13.152+0900	[34mINFO[0m	Membership heartbeat upserted successfully	{"address": "127.0.0.1", "port": 53277, "hostId": "e9a99c22-a2e8-11ee-b393-5a16eb2ad7bc", "logging-call-at": "monitor.go:256"}
+[server] 2023-12-25T14:46:13.152+0900	[34mINFO[0m	bootstrap hosts fetched	{"bootstrap-hostports": "127.0.0.1:53273,127.0.0.1:53279,127.0.0.1:53277", "logging-call-at": "monitor.go:298"}
+[server] 2023-12-25T14:46:13.152+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "worker", "addresses": ["127.0.0.1:53278"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.152+0900	[34mINFO[0m	bootstrap hosts fetched	{"bootstrap-hostports": "127.0.0.1:53277,127.0.0.1:53273,127.0.0.1:53279", "logging-call-at": "monitor.go:298"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] original dial target is: "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] dial target "127.0.0.1:7233" parse failed: parse "127.0.0.1:7233": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:7233 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] Channel authority set to "127.0.0.1:7233"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:7233",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:7233", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26 SubChannel #27] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26 SubChannel #27] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26 SubChannel #27] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000fc0348, CONNECTING
+[server] 2023-12-25T14:46:13.154+0900	[34mINFO[0m	RuntimeMetricsReporter started	{"service": "history", "logging-call-at": "runtime.go:138"}
+[server] 2023-12-25T14:46:13.154+0900	[34mINFO[0m	history starting	{"service": "history", "logging-call-at": "service.go:91"}
+[server] 2023-12-25T14:46:13.154+0900	[34mINFO[0m	Replication task fetchers started.	{"logging-call-at": "task_fetcher.go:142"}
+[server] 2023-12-25T14:46:13.154+0900	[34mINFO[0m	none	{"component": "shard-controller", "address": "127.0.0.1:53274", "lifecycle": "Started", "logging-call-at": "controller_impl.go:136"}
+[server] 2023-12-25T14:46:13.154+0900	[34mINFO[0m	Starting to serve on history listener	{"service": "history", "logging-call-at": "service.go:103"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Server #5 ListenSocket #28] ListenSocket created
+[server] 2023-12-25T14:46:13.155+0900	[34mINFO[0m	Membership heartbeat upserted successfully	{"address": "127.0.0.1", "port": 53275, "hostId": "e9a8daee-a2e8-11ee-b393-5a16eb2ad7bc", "logging-call-at": "monitor.go:256"}
+[server] 2023-12-25T14:46:13.155+0900	[34mINFO[0m	sequential scheduler started	{"logging-call-at": "sequential_scheduler.go:96"}
+[server] 2023-12-25T14:46:13.155+0900	[34mINFO[0m	bootstrap hosts fetched	{"bootstrap-hostports": "127.0.0.1:53275,127.0.0.1:53277,127.0.0.1:53273,127.0.0.1:53279", "logging-call-at": "monitor.go:298"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26 SubChannel #27] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000fc0348, READY
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:27):{{Addr: "127.0.0.1:7233", ServerName: "", }}]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #26] Channel Connectivity change to READY
+[server] 2023-12-25T14:46:13.157+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "matching", "addresses": ["127.0.0.1:53276"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.157+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "worker", "addresses": ["127.0.0.1:53278"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.157+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "worker", "addresses": ["127.0.0.1:53278"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.157+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "frontend", "addresses": ["127.0.0.1:7233"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.157+0900	[34mINFO[0m	Frontend is now healthy	{"service": "frontend", "logging-call-at": "workflow_handler.go:218"}
+[server] 2023-12-25T14:46:13.157+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "worker", "addresses": ["127.0.0.1:53278"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.157+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "history", "addresses": ["127.0.0.1:53274"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.157+0900	[34mINFO[0m	none	{"component": "shard-controller", "address": "127.0.0.1:53274", "component": "shard-controller", "address": "127.0.0.1:53274", "shard-update": "RingMembershipChangedEvent", "number-processed": 1, "number-deleted": 0, "logging-call-at": "ownership.go:116"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "lifecycle": "Started", "component": "shard-context", "logging-call-at": "context_impl.go:1482"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"component": "shard-controller", "address": "127.0.0.1:53274", "numShards": 1, "logging-call-at": "controller_impl.go:286"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "matching", "addresses": ["127.0.0.1:53276"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	Range updated for shardID	{"shard-id": 1, "address": "127.0.0.1:53274", "shard-range-id": 1, "previous-shard-range-id": 0, "number": 0, "next-number": 0, "logging-call-at": "context_impl.go:1147"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	Acquired shard	{"shard-id": 1, "address": "127.0.0.1:53274", "logging-call-at": "context_impl.go:1839"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "lifecycle": "Starting", "component": "shard-engine", "logging-call-at": "context_impl.go:1358"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "history-engine", "lifecycle": "Starting", "logging-call-at": "history_engine.go:286"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "timer-queue-processor", "lifecycle": "Starting", "logging-call-at": "queue_scheduled.go:154"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	Task rescheduler started.	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "timer-queue-processor", "lifecycle": "Started", "logging-call-at": "rescheduler.go:124"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "timer-queue-processor", "lifecycle": "Started", "logging-call-at": "queue_scheduled.go:163"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "visibility-queue-processor", "lifecycle": "Starting", "logging-call-at": "queue_immediate.go:114"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	Task rescheduler started.	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "visibility-queue-processor", "lifecycle": "Started", "logging-call-at": "rescheduler.go:124"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "visibility-queue-processor", "lifecycle": "Started", "logging-call-at": "queue_immediate.go:123"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "transfer-queue-processor", "lifecycle": "Starting", "logging-call-at": "queue_immediate.go:114"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	Task rescheduler started.	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "transfer-queue-processor", "lifecycle": "Started", "logging-call-at": "rescheduler.go:124"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "transfer-queue-processor", "lifecycle": "Started", "logging-call-at": "queue_immediate.go:123"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"service": "history", "component": "memory-scheduled-queue-processor", "lifecycle": "Starting", "logging-call-at": "memory_scheduled_queue.go:103"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"service": "history", "component": "memory-scheduled-queue-processor", "lifecycle": "Started", "logging-call-at": "memory_scheduled_queue.go:108"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "history", "addresses": ["127.0.0.1:53274"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "matching", "addresses": ["127.0.0.1:53276"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "history-engine", "lifecycle": "Started", "logging-call-at": "history_engine.go:295"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	none	{"shard-id": 1, "address": "127.0.0.1:53274", "lifecycle": "Started", "component": "shard-engine", "logging-call-at": "context_impl.go:1361"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	queue reader started	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "timer-queue-processor", "queue-reader-id": 0, "lifecycle": "Started", "logging-call-at": "reader.go:182"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	queue reader started	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "visibility-queue-processor", "queue-reader-id": 0, "lifecycle": "Started", "logging-call-at": "reader.go:182"}
+[server] 2023-12-25T14:46:13.158+0900	[34mINFO[0m	queue reader started	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "transfer-queue-processor", "queue-reader-id": 0, "lifecycle": "Started", "logging-call-at": "reader.go:182"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] original dial target is: "127.0.0.1:53274"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] dial target "127.0.0.1:53274" parse failed: parse "127.0.0.1:53274": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:53274 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] Channel authority set to "127.0.0.1:53274"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:53274",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:53274", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31 SubChannel #32] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31 SubChannel #32] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31 SubChannel #32] Subchannel picks a new address "127.0.0.1:53274" to connect
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140012dfa40, CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31 SubChannel #32] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140012dfa40, READY
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:32):{{Addr: "127.0.0.1:53274", ServerName: "", }}]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #31] Channel Connectivity change to READY
+[server] 2023-12-25T14:46:13.162+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "frontend", "addresses": ["127.0.0.1:7233"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.162+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "history", "addresses": ["127.0.0.1:53274"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.164+0900	[34mINFO[0m	temporal-sys-tq-scanner-workflow workflow successfully started	{"service": "worker", "logging-call-at": "scanner.go:292"}
+[server] 2023-12-25T14:46:13.164+0900	[34mINFO[0m	temporal-sys-history-scanner-workflow workflow successfully started	{"service": "worker", "logging-call-at": "scanner.go:292"}
+[server] 2023-12-25T14:46:13.181+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "history", "addresses": ["127.0.0.1:53274"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.181+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "frontend", "addresses": ["127.0.0.1:7233"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:13.299+0900	[34mINFO[0m	Started Worker	{"service": "worker", "Namespace": "temporal-system", "TaskQueue": "temporal-sys-tq-scanner-taskqueue-0", "WorkerID": "21162@AL02274473.local@", "logging-call-at": "scanner.go:239"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] original dial target is: "127.0.0.1:53276"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] dial target "127.0.0.1:53276" parse failed: parse "127.0.0.1:53276": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:53276 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] Channel authority set to "127.0.0.1:53276"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:53276",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:53276", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35 SubChannel #36] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35 SubChannel #36] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35 SubChannel #36] Subchannel picks a new address "127.0.0.1:53276" to connect
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000fc14b8, CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35 SubChannel #36] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000fc14b8, READY
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:36):{{Addr: "127.0.0.1:53276", ServerName: "", }}]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #35] Channel Connectivity change to READY
+[server] 2023-12-25T14:46:13.301+0900	[34mINFO[0m	Started Worker	{"service": "worker", "Namespace": "temporal-system", "TaskQueue": "temporal-sys-history-scanner-taskqueue-0", "WorkerID": "21162@AL02274473.local@", "logging-call-at": "scanner.go:239"}
+[server] 2023-12-25T14:46:13.301+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "AL02274473.local:508816e3-3ddf-44b4-9818-72cb24b4ad10", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.301+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-tq-scanner-taskqueue-0", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.301+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "AL02274473.local:78c08374-0336-4f9f-b51d-74a0ee54e8a2", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] Channel created
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] original dial target is: "127.0.0.1:53276"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] dial target "127.0.0.1:53276" parse failed: parse "127.0.0.1:53276": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:53276 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] Channel authority set to "127.0.0.1:53276"
+[server] 2023-12-25T14:46:13.302+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-tq-scanner-taskqueue-0", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:53276",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] Channel switches to new LB policy "round_robin"
+[server] 2023-12-25T14:46:13.302+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-history-scanner-taskqueue-0/1", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:53276", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39 SubChannel #40] Subchannel created
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39 SubChannel #40] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39 SubChannel #40] Subchannel picks a new address "127.0.0.1:53276" to connect
+[server] 2023-12-25T14:46:13.302+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-tq-scanner-taskqueue-0/1", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x1400139a498, CONNECTING
+[server] 2023-12-25T14:46:13.302+0900	[34mINFO[0m	Started Worker	{"service": "worker", "Namespace": "temporal-system", "TaskQueue": "temporal-sys-processor-parent-close-policy", "WorkerID": "21162@AL02274473.local@", "logging-call-at": "processor.go:98"}
+[server] 2023-12-25T14:46:13.303+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-tq-scanner-taskqueue-0/1", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39 SubChannel #40] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:13 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x1400139a498, READY
+[server] 2023/12/25 14:46:13 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:40):{{Addr: "127.0.0.1:53276", ServerName: "", }}]}
+[server] 2023/12/25 14:46:13 INFO: [core] [Channel #39] Channel Connectivity change to READY
+[server] 2023-12-25T14:46:13.303+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "AL02274473.local:fc3ba8a2-9e25-4f97-81d7-064d9e8c2f68", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.303+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-history-scanner-taskqueue-0/2", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.303+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-tq-scanner-taskqueue-0/3", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.303+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-history-scanner-taskqueue-0", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.303+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-processor-parent-close-policy", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.303+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-processor-parent-close-policy", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.304+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-history-scanner-taskqueue-0", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.304+0900	[34mINFO[0m	Started Worker	{"service": "worker", "Namespace": "temporal-system", "TaskQueue": "temporal-sys-batcher-taskqueue", "WorkerID": "21162@AL02274473.local@", "logging-call-at": "batcher.go:98"}
+[server] 2023-12-25T14:46:13.304+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "AL02274473.local:ef95ed62-4d70-42d6-919d-630cb32f6b55", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.304+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-tq-scanner-taskqueue-0/2", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.304+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-batcher-taskqueue", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.304+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-history-scanner-taskqueue-0/2", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.304+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-batcher-taskqueue/1", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-batcher-taskqueue", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-batcher-taskqueue/2", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	Started Worker	{"service": "worker", "Namespace": "temporal-system", "TaskQueue": "default-worker-tq", "WorkerID": "21162@AL02274473.local@", "logging-call-at": "worker.go:101"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	none	{"component": "worker-manager", "lifecycle": "Started", "logging-call-at": "worker.go:106"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	none	{"component": "perns-worker-manager", "lifecycle": "Starting", "logging-call-at": "pernamespaceworker.go:166"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	none	{"component": "perns-worker-manager", "lifecycle": "Started", "logging-call-at": "pernamespaceworker.go:177"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	worker service started	{"service": "worker", "component": "worker", "address": "127.0.0.1:53278", "logging-call-at": "service.go:418"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-processor-parent-close-policy/1", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "AL02274473.local:90df84f7-e102-47b9-ba25-4f34a177d8e9", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.305+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-processor-parent-close-policy/3", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.306+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "default-worker-tq", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.308+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/default-worker-tq/3", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.308+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-processor-parent-close-policy/2", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.308+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "default-worker-tq", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.308+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-history-scanner-taskqueue-0/3", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.309+0900	[34mINFO[0m	Started Worker	{"service": "worker", "Namespace": "default", "TaskQueue": "temporal-sys-per-ns-tq", "WorkerID": "server-worker@21162@AL02274473.local@default", "logging-call-at": "pernamespaceworker.go:483"}
+[server] 2023-12-25T14:46:13.309+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "AL02274473.local:5d794a0e-5497-4fdd-aec8-7ccf75fb7527", "wf-task-queue-type": "Workflow", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.309+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "AL02274473.local:1663a943-06e6-465d-aca9-fc4bd31411bc", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.309+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/temporal-sys-history-scanner-taskqueue-0/3", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.309+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-per-ns-tq", "wf-task-queue-type": "Workflow", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.309+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-per-ns-tq", "wf-task-queue-type": "Activity", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.309+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-per-ns-tq", "wf-task-queue-type": "Workflow", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:13.309+0900	[34mINFO[0m	Started Worker	{"service": "worker", "Namespace": "temporal-system", "TaskQueue": "temporal-sys-per-ns-tq", "WorkerID": "server-worker@21162@AL02274473.local@temporal-system", "logging-call-at": "pernamespaceworker.go:483"}
+[server] 2023-12-25T14:46:13.310+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "temporal-sys-per-ns-tq", "wf-task-queue-type": "Activity", "wf-namespace": "temporal-system", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
 [worker] 
 [worker] > temporal-money-transfer@0.1.0 worker
 [worker] > ts-node src/worker.ts
 [worker] 
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #3 SubChannel #4] Subchannel Connectivity change to IDLE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000cea108, IDLE
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #3 SubChannel #4] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #3 SubChannel #4] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to IDLE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140009940f0, IDLE
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #1 SubChannel #2] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000cea108, CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140009940f0, CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #3 SubChannel #4] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000cea108, READY
+[server] 2023/12/25 14:46:14 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:4):{{Addr: "127.0.0.1:7233", ServerName: "", }}]}
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #3] Channel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140009940f0, READY
+[server] 2023/12/25 14:46:14 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:2):{{Addr: "127.0.0.1:7233", ServerName: "", }}]}
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #1] Channel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #6 SubChannel #7] Subchannel Connectivity change to IDLE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaa68, IDLE
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #6 SubChannel #7] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #6 SubChannel #7] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaa68, CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #6 SubChannel #7] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaa68, READY
+[server] 2023/12/25 14:46:14 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:7):{{Addr: "127.0.0.1:7233", ServerName: "", }}]}
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #6] Channel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #8 SubChannel #9] Subchannel Connectivity change to IDLE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaab0, IDLE
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #8 SubChannel #9] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #8 SubChannel #9] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaab0, CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #8 SubChannel #9] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceaab0, READY
+[server] 2023/12/25 14:46:14 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:9):{{Addr: "127.0.0.1:7233", ServerName: "", }}]}
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #8] Channel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #11 SubChannel #12] Subchannel Connectivity change to IDLE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb128, IDLE
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #11 SubChannel #12] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #11 SubChannel #12] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #13 SubChannel #14] Subchannel Connectivity change to IDLE, last error: connection error: desc = "transport: Error while dialing: dial tcp 127.0.0.1:7233: connect: connection refused"
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb1b8, IDLE
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #13 SubChannel #14] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #13 SubChannel #14] Subchannel picks a new address "127.0.0.1:7233" to connect
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb128, CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb1b8, CONNECTING
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #13 SubChannel #14] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb1b8, READY
+[server] 2023/12/25 14:46:14 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:14):{{Addr: "127.0.0.1:7233", ServerName: "", }}]}
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #13] Channel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #11 SubChannel #12] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:14 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x14000ceb128, READY
+[server] 2023/12/25 14:46:14 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:12):{{Addr: "127.0.0.1:7233", ServerName: "", }}]}
+[server] 2023/12/25 14:46:14 INFO: [core] [Channel #11] Channel Connectivity change to READY
 [worker] DEBUG: /Users/swcho/projects/swcho/money-transfer-project-example/src/activities.ts
-[worker] [35m2023-12-17T02:44:41.520Z[39m [INFO] Creating worker {
+[worker] [35m2023-12-25T05:46:15.558Z[39m [INFO] Creating worker {
 [worker]   options: {
 [worker]     namespace: [32m'default'[39m,
-[worker]     identity: [32m'77737@AL02274473.local'[39m,
+[worker]     identity: [32m'21203@AL02274473.local'[39m,
 [worker]     useVersioning: [33mfalse[39m,
 [worker]     buildId: [90mundefined[39m,
 [worker]     shutdownGraceTime: [33m0[39m,
@@ -195,43 +656,43 @@
 [client] > temporal-money-transfer@0.1.0 client
 [client] > ts-node src/client.ts
 [client] 
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] asset [1m[32mworkflow-bundle-a6218372a8d3b09e32a4.js[39m[22m 2.49 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] orphan modules 39 KiB [1m[33m[orphan][39m[22m 33 modules
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] runtime modules 1.13 KiB 5 modules
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] modules by path [1m./node_modules/[39m[22m 737 KiB
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   modules by path [1m./node_modules/@temporalio/[39m[22m 382 KiB
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]     modules by path [1m./node_modules/@temporalio/common/[39m[22m 175 KiB 68 modules
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]     modules by path [1m./node_modules/@temporalio/interceptors-opentelemetry/[39m[22m 105 KiB 51 modules
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]     modules by path [1m./node_modules/@temporalio/workflow/[39m[22m 102 KiB 14 modules
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   modules by path [1m./node_modules/@opentelemetry/[39m[22m 311 KiB 117 modules
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   [1m./node_modules/long/umd/index.js[39m[22m 43.1 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] modules by path [1m./src/[39m[22m 2.78 KiB
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   [1m./src/workflows-autogenerated-entrypoint.cjs[39m[22m 494 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO]   [1m./src/workflows.ts[39m[22m 2.3 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] [1m__temporal_custom_payload_converter (ignored)[39m[22m 15 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] [1m__temporal_custom_failure_converter (ignored)[39m[22m 15 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-[worker] [35m2023-12-17T02:44:42.343Z[39m [INFO] webpack 5.88.2 compiled [1m[32msuccessfully[39m[22m in 678 ms
-[worker] [35m2023-12-17T02:44:42.348Z[39m [INFO] Workflow bundle created { size: [32m'2.49MB'[39m }
-[worker] [2m2023-12-17T02:44:42.464147Z[0m [32m INFO[0m [2mtemporal_sdk_core::worker[0m[2m:[0m Initializing worker [3mtask_queue[0m[2m=[0mmoney-transfer [3mnamespace[0m[2m=[0mdefault
-[worker] [35m2023-12-17T02:44:42.464Z[39m [INFO] Worker state changed { state: [32m'RUNNING'[39m }
-[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"77737@AL02274473.local-8d19c00465aa4b71924d1de4eb2ad606","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/1","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/3","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"money-transfer","wf-task-queue-type":"Workflow","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/2","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:42.468+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/1","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[server] {"level":"info","ts":"2023-12-17T11:44:42.469+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"money-transfer","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
-[client] D 2023-12-17T02:44:43.343Z | index | Loading @grpc/grpc-js version 1.7.3
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO] asset [1m[32mworkflow-bundle-a6218372a8d3b09e32a4.js[39m[22m 2.49 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO] orphan modules 39 KiB [1m[33m[orphan][39m[22m 33 modules
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO] runtime modules 1.13 KiB 5 modules
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO] modules by path [1m./node_modules/[39m[22m 737 KiB
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO]   modules by path [1m./node_modules/@temporalio/[39m[22m 382 KiB
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO]     modules by path [1m./node_modules/@temporalio/common/[39m[22m 175 KiB 68 modules
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO]     modules by path [1m./node_modules/@temporalio/interceptors-opentelemetry/[39m[22m 105 KiB 51 modules
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO]     modules by path [1m./node_modules/@temporalio/workflow/[39m[22m 102 KiB 14 modules
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO]   modules by path [1m./node_modules/@opentelemetry/[39m[22m 311 KiB 117 modules
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO]   [1m./node_modules/long/umd/index.js[39m[22m 43.1 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO] modules by path [1m./src/[39m[22m 2.78 KiB
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO]   [1m./src/workflows-autogenerated-entrypoint.cjs[39m[22m 494 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-25T05:46:16.484Z[39m [INFO]   [1m./src/workflows.ts[39m[22m 2.3 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-25T05:46:16.485Z[39m [INFO] [1m__temporal_custom_payload_converter (ignored)[39m[22m 15 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-25T05:46:16.485Z[39m [INFO] [1m__temporal_custom_failure_converter (ignored)[39m[22m 15 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+[worker] [35m2023-12-25T05:46:16.485Z[39m [INFO] webpack 5.88.2 compiled [1m[32msuccessfully[39m[22m in 692 ms
+[worker] [35m2023-12-25T05:46:16.489Z[39m [INFO] Workflow bundle created { size: [32m'2.49MB'[39m }
+[worker] [2m2023-12-25T05:46:16.548103Z[0m [32m INFO[0m [2mtemporal_sdk_core::worker[0m[2m:[0m Initializing worker [3mtask_queue[0m[2m=[0mmoney-transfer [3mnamespace[0m[2m=[0mdefault
+[worker] [35m2023-12-25T05:46:16.548Z[39m [INFO] Worker state changed { state: [32m'RUNNING'[39m }
+[server] 2023-12-25T14:46:16.551+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "21203@AL02274473.local-8b3b9146c0a342448b09c4d7a54b1add", "wf-task-queue-type": "Workflow", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:16.551+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/money-transfer/3", "wf-task-queue-type": "Workflow", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:16.551+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "money-transfer", "wf-task-queue-type": "Workflow", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:16.551+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/money-transfer/1", "wf-task-queue-type": "Activity", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:16.551+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/money-transfer/3", "wf-task-queue-type": "Activity", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:16.552+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "money-transfer", "wf-task-queue-type": "Activity", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023-12-25T14:46:16.552+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/money-transfer/2", "wf-task-queue-type": "Activity", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[client] D 2023-12-25T05:46:17.137Z | index | Loading @grpc/grpc-js version 1.7.3
 [client] DEBUG: /Users/swcho/projects/swcho/money-transfer-project-example/src/workflows.ts
-[client] D 2023-12-17T02:44:43.514Z | resolving_load_balancer | dns:127.0.0.1:7233 IDLE -> IDLE
-[client] D 2023-12-17T02:44:43.514Z | connectivity_state | (1) dns:127.0.0.1:7233 IDLE -> IDLE
-[client] D 2023-12-17T02:44:43.514Z | dns_resolver | Resolver constructed for target dns:127.0.0.1:7233
-[client] D 2023-12-17T02:44:43.514Z | channel | (1) dns:127.0.0.1:7233 Channel constructed with options {
+[client] D 2023-12-25T05:46:17.306Z | resolving_load_balancer | dns:127.0.0.1:7233 IDLE -> IDLE
+[client] D 2023-12-25T05:46:17.306Z | connectivity_state | (1) dns:127.0.0.1:7233 IDLE -> IDLE
+[client] D 2023-12-25T05:46:17.306Z | dns_resolver | Resolver constructed for target dns:127.0.0.1:7233
+[client] D 2023-12-25T05:46:17.307Z | channel | (1) dns:127.0.0.1:7233 Channel constructed with options {
 [client]   "grpc.keepalive_permit_without_calls": 1,
 [client]   "grpc.keepalive_time_ms": 30000,
 [client]   "grpc.keepalive_timeout_ms": 15000
 [client] }
-[client] D 2023-12-17T02:44:43.519Z | channel_stacktrace | (1) Channel constructed 
+[client] D 2023-12-25T05:46:17.313Z | channel_stacktrace | (1) Channel constructed 
 [client]     at new ChannelImplementation (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@grpc/grpc-js/src/channel.ts:367:19)
 [client]     at new Client (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@grpc/grpc-js/src/client.ts:157:30)
 [client]     at new ServiceClientImpl (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@grpc/grpc-js/src/make-client.ts:129:3)
@@ -240,43 +701,43 @@
 [client]     at Function.connect (/Users/swcho/projects/swcho/money-transfer-project-example/node_modules/@temporalio/client/src/connection.ts:309:23)
 [client]     at run (/Users/swcho/projects/swcho/money-transfer-project-example/src/client.ts:35:39)
 [client]     at processTicksAndRejections (node:internal/process/task_queues:95:5)
-[client] D 2023-12-17T02:44:43.550Z | dns_resolver | Returning IP address for target dns:127.0.0.1:7233
-[client] D 2023-12-17T02:44:43.551Z | resolving_load_balancer | dns:127.0.0.1:7233 IDLE -> CONNECTING
-[client] D 2023-12-17T02:44:43.551Z | connectivity_state | (1) dns:127.0.0.1:7233 IDLE -> CONNECTING
-[client] D 2023-12-17T02:44:43.551Z | pick_first | Connect to address list 127.0.0.1:7233
-[client] D 2023-12-17T02:44:43.552Z | subchannel | (2) 127.0.0.1:7233 Subchannel constructed with options {
+[client] D 2023-12-25T05:46:17.343Z | dns_resolver | Returning IP address for target dns:127.0.0.1:7233
+[client] D 2023-12-25T05:46:17.343Z | resolving_load_balancer | dns:127.0.0.1:7233 IDLE -> CONNECTING
+[client] D 2023-12-25T05:46:17.343Z | connectivity_state | (1) dns:127.0.0.1:7233 IDLE -> CONNECTING
+[client] D 2023-12-25T05:46:17.343Z | pick_first | Connect to address list 127.0.0.1:7233
+[client] D 2023-12-25T05:46:17.344Z | subchannel | (2) 127.0.0.1:7233 Subchannel constructed with options {
 [client]   "grpc.keepalive_permit_without_calls": 1,
 [client]   "grpc.keepalive_time_ms": 30000,
 [client]   "grpc.keepalive_timeout_ms": 15000
 [client] }
-[client] D 2023-12-17T02:44:43.552Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 0 -> 1
-[client] D 2023-12-17T02:44:43.552Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 1 -> 2
-[client] D 2023-12-17T02:44:43.552Z | pick_first | Start connecting to subchannel with address 127.0.0.1:7233
-[client] D 2023-12-17T02:44:43.552Z | pick_first | IDLE -> CONNECTING
-[client] D 2023-12-17T02:44:43.552Z | resolving_load_balancer | dns:127.0.0.1:7233 CONNECTING -> CONNECTING
-[client] D 2023-12-17T02:44:43.552Z | connectivity_state | (1) dns:127.0.0.1:7233 CONNECTING -> CONNECTING
-[client] D 2023-12-17T02:44:43.552Z | subchannel | (2) 127.0.0.1:7233 IDLE -> CONNECTING
-[client] D 2023-12-17T02:44:43.552Z | pick_first | CONNECTING -> CONNECTING
-[client] D 2023-12-17T02:44:43.552Z | resolving_load_balancer | dns:127.0.0.1:7233 CONNECTING -> CONNECTING
-[client] D 2023-12-17T02:44:43.552Z | connectivity_state | (1) dns:127.0.0.1:7233 CONNECTING -> CONNECTING
-[client] D 2023-12-17T02:44:43.553Z | subchannel | (2) 127.0.0.1:7233 creating HTTP/2 session
-[client] D 2023-12-17T02:44:43.557Z | subchannel | (2) 127.0.0.1:7233 CONNECTING -> READY
-[client] D 2023-12-17T02:44:43.557Z | pick_first | Pick subchannel with address 127.0.0.1:7233
-[client] D 2023-12-17T02:44:43.557Z | pick_first | CONNECTING -> READY
-[client] D 2023-12-17T02:44:43.557Z | resolving_load_balancer | dns:127.0.0.1:7233 CONNECTING -> READY
-[client] D 2023-12-17T02:44:43.557Z | connectivity_state | (1) dns:127.0.0.1:7233 CONNECTING -> READY
-[client] D 2023-12-17T02:44:43.557Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 2 -> 3
-[client] D 2023-12-17T02:44:43.557Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 3 -> 2
-[client] D 2023-12-17T02:44:43.559Z | channel | (1) dns:127.0.0.1:7233 createCall [0] method="/temporal.api.workflowservice.v1.WorkflowService/GetSystemInfo", deadline=1702781093548
-[client] D 2023-12-17T02:44:43.559Z | call_stream | [0] Sending metadata
-[client] D 2023-12-17T02:44:43.560Z | channel | (1) dns:127.0.0.1:7233 Pick result for call [0]: COMPLETE subchannel: (2) 127.0.0.1:7233 status: undefined undefined
+[client] D 2023-12-25T05:46:17.344Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 0 -> 1
+[client] D 2023-12-25T05:46:17.344Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 1 -> 2
+[client] D 2023-12-25T05:46:17.344Z | pick_first | Start connecting to subchannel with address 127.0.0.1:7233
+[client] D 2023-12-25T05:46:17.344Z | pick_first | IDLE -> CONNECTING
+[client] D 2023-12-25T05:46:17.344Z | resolving_load_balancer | dns:127.0.0.1:7233 CONNECTING -> CONNECTING
+[client] D 2023-12-25T05:46:17.344Z | connectivity_state | (1) dns:127.0.0.1:7233 CONNECTING -> CONNECTING
+[client] D 2023-12-25T05:46:17.344Z | subchannel | (2) 127.0.0.1:7233 IDLE -> CONNECTING
+[client] D 2023-12-25T05:46:17.344Z | pick_first | CONNECTING -> CONNECTING
+[client] D 2023-12-25T05:46:17.344Z | resolving_load_balancer | dns:127.0.0.1:7233 CONNECTING -> CONNECTING
+[client] D 2023-12-25T05:46:17.344Z | connectivity_state | (1) dns:127.0.0.1:7233 CONNECTING -> CONNECTING
+[client] D 2023-12-25T05:46:17.345Z | subchannel | (2) 127.0.0.1:7233 creating HTTP/2 session
+[client] D 2023-12-25T05:46:17.348Z | subchannel | (2) 127.0.0.1:7233 CONNECTING -> READY
+[client] D 2023-12-25T05:46:17.348Z | pick_first | Pick subchannel with address 127.0.0.1:7233
+[client] D 2023-12-25T05:46:17.348Z | pick_first | CONNECTING -> READY
+[client] D 2023-12-25T05:46:17.348Z | resolving_load_balancer | dns:127.0.0.1:7233 CONNECTING -> READY
+[client] D 2023-12-25T05:46:17.348Z | connectivity_state | (1) dns:127.0.0.1:7233 CONNECTING -> READY
+[client] D 2023-12-25T05:46:17.348Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 2 -> 3
+[client] D 2023-12-25T05:46:17.348Z | subchannel_refcount | (2) 127.0.0.1:7233 refcount 3 -> 2
+[client] D 2023-12-25T05:46:17.350Z | channel | (1) dns:127.0.0.1:7233 createCall [0] method="/temporal.api.workflowservice.v1.WorkflowService/GetSystemInfo", deadline=1703483187340
+[client] D 2023-12-25T05:46:17.350Z | call_stream | [0] Sending metadata
+[client] D 2023-12-25T05:46:17.350Z | channel | (1) dns:127.0.0.1:7233 Pick result for call [0]: COMPLETE subchannel: (2) 127.0.0.1:7233 status: undefined undefined
 [client] GRPC.sendMessage <Buffer >
-[client] D 2023-12-17T02:44:43.560Z | call_stream | [0] write() called with message of length 0
-[client] D 2023-12-17T02:44:43.560Z | call_stream | [0] end() called
-[client] D 2023-12-17T02:44:43.561Z | call_stream | Starting stream [0] on subchannel (2) 127.0.0.1:7233 with headers
+[client] D 2023-12-25T05:46:17.351Z | call_stream | [0] write() called with message of length 0
+[client] D 2023-12-25T05:46:17.351Z | call_stream | [0] end() called
+[client] D 2023-12-25T05:46:17.352Z | call_stream | Starting stream [0] on subchannel (2) 127.0.0.1:7233 with headers
 [client] 		client-name: temporal-typescript
 [client] 		client-version: 1.8.6
-[client] 		grpc-timeout: 9988m
+[client] 		grpc-timeout: 9989m
 [client] 		grpc-accept-encoding: identity,deflate,gzip
 [client] 		accept-encoding: identity
 [client] 		:authority: 127.0.0.1:7233
@@ -286,40 +747,40 @@
 [client] 		:path: /temporal.api.workflowservice.v1.WorkflowService/GetSystemInfo
 [client] 		te: trailers
 [client] 
-[client] D 2023-12-17T02:44:43.561Z | subchannel_flowctrl | (2) 127.0.0.1:7233 local window size: 65535 remote window size: 65535
-[client] D 2023-12-17T02:44:43.561Z | subchannel_internals | (2) 127.0.0.1:7233 session.closed=false session.destroyed=false session.socket.destroyed=false
-[client] D 2023-12-17T02:44:43.562Z | call_stream | [0] attachHttp2Stream from subchannel 127.0.0.1:7233
-[client] D 2023-12-17T02:44:43.562Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 0 -> 1
-[client] D 2023-12-17T02:44:43.562Z | call_stream | [0] sending data chunk of length 5
-[client] D 2023-12-17T02:44:43.562Z | call_stream | [0] calling end() on HTTP/2 stream
-[client] D 2023-12-17T02:44:43.563Z | subchannel | (2) 127.0.0.1:7233 new settings received: {"headerTableSize":4096,"enablePush":true,"initialWindowSize":65535,"maxFrameSize":16384,"maxConcurrentStreams":4294967295,"maxHeaderListSize":4294967295,"maxHeaderSize":4294967295,"enableConnectProtocol":false}
-[client] D 2023-12-17T02:44:43.563Z | subchannel | (2) 127.0.0.1:7233 local settings acknowledged by remote: {"headerTableSize":4096,"enablePush":true,"initialWindowSize":65535,"maxFrameSize":16384,"maxConcurrentStreams":4294967295,"maxHeaderListSize":4294967295,"maxHeaderSize":4294967295,"enableConnectProtocol":false}
-[client] D 2023-12-17T02:44:43.563Z | call_stream | [0] Received server headers:
+[client] D 2023-12-25T05:46:17.352Z | subchannel_flowctrl | (2) 127.0.0.1:7233 local window size: 65535 remote window size: 65535
+[client] D 2023-12-25T05:46:17.352Z | subchannel_internals | (2) 127.0.0.1:7233 session.closed=false session.destroyed=false session.socket.destroyed=false
+[client] D 2023-12-25T05:46:17.352Z | call_stream | [0] attachHttp2Stream from subchannel 127.0.0.1:7233
+[client] D 2023-12-25T05:46:17.352Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 0 -> 1
+[client] D 2023-12-25T05:46:17.353Z | call_stream | [0] sending data chunk of length 5
+[client] D 2023-12-25T05:46:17.353Z | call_stream | [0] calling end() on HTTP/2 stream
+[client] D 2023-12-25T05:46:17.353Z | subchannel | (2) 127.0.0.1:7233 new settings received: {"headerTableSize":4096,"enablePush":true,"initialWindowSize":65535,"maxFrameSize":16384,"maxConcurrentStreams":4294967295,"maxHeaderListSize":4294967295,"maxHeaderSize":4294967295,"enableConnectProtocol":false}
+[client] D 2023-12-25T05:46:17.353Z | subchannel | (2) 127.0.0.1:7233 local settings acknowledged by remote: {"headerTableSize":4096,"enablePush":true,"initialWindowSize":65535,"maxFrameSize":16384,"maxConcurrentStreams":4294967295,"maxHeaderListSize":4294967295,"maxHeaderSize":4294967295,"enableConnectProtocol":false}
+[client] D 2023-12-25T05:46:17.354Z | call_stream | [0] Received server headers:
 [client] 		:status: 200
 [client] 		content-type: application/grpc
 [client] 
-[client] D 2023-12-17T02:44:43.563Z | call_stream | [0] receive HTTP/2 data frame of length 35
-[client] D 2023-12-17T02:44:43.563Z | call_stream | [0] parsed message of length 35
-[client] D 2023-12-17T02:44:43.563Z | call_stream | [0] filterReceivedMessage of length 35
-[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] pushing to reader message of length 30
-[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] Received server trailers:
+[client] D 2023-12-25T05:46:17.354Z | call_stream | [0] receive HTTP/2 data frame of length 35
+[client] D 2023-12-25T05:46:17.354Z | call_stream | [0] parsed message of length 35
+[client] D 2023-12-25T05:46:17.354Z | call_stream | [0] filterReceivedMessage of length 35
+[client] D 2023-12-25T05:46:17.354Z | call_stream | [0] pushing to reader message of length 30
+[client] D 2023-12-25T05:46:17.355Z | call_stream | [0] Received server trailers:
 [client] 		grpc-status: 0
 [client] 		grpc-message: 
 [client] 
-[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] received status code 0 from server
-[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] received status details string "" from server
-[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] close http2 stream with code 0
-[client] D 2023-12-17T02:44:43.564Z | call_stream | [0] ended with status: code=0 details=""
-[client] D 2023-12-17T02:44:43.564Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 1 -> 0
-[client] D 2023-12-17T02:44:43.565Z | call_stream | [0] HTTP/2 stream closed with code 0
+[client] D 2023-12-25T05:46:17.355Z | call_stream | [0] received status code 0 from server
+[client] D 2023-12-25T05:46:17.355Z | call_stream | [0] received status details string "" from server
+[client] D 2023-12-25T05:46:17.355Z | call_stream | [0] close http2 stream with code 0
+[client] D 2023-12-25T05:46:17.355Z | call_stream | [0] ended with status: code=0 details=""
+[client] D 2023-12-25T05:46:17.355Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 1 -> 0
+[client] D 2023-12-25T05:46:17.356Z | call_stream | [0] HTTP/2 stream closed with code 0
 [client] Starting transfer from account 85-150 to account 43-812 for $400
-[client] D 2023-12-17T02:44:43.570Z | channel | (1) dns:127.0.0.1:7233 createCall [1] method="/temporal.api.workflowservice.v1.WorkflowService/StartWorkflowExecution", deadline=Infinity
-[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] Sending metadata
-[client] D 2023-12-17T02:44:43.570Z | channel | (1) dns:127.0.0.1:7233 Pick result for call [1]: COMPLETE subchannel: (2) 127.0.0.1:7233 status: undefined undefined
+[client] D 2023-12-25T05:46:17.360Z | channel | (1) dns:127.0.0.1:7233 createCall [1] method="/temporal.api.workflowservice.v1.WorkflowService/StartWorkflowExecution", deadline=Infinity
+[client] D 2023-12-25T05:46:17.360Z | call_stream | [1] Sending metadata
+[client] D 2023-12-25T05:46:17.360Z | channel | (1) dns:127.0.0.1:7233 Pick result for call [1]: COMPLETE subchannel: (2) 127.0.0.1:7233 status: undefined undefined
 [client] GRPC.sendMessage <Buffer 0a 07 64 65 66 61 75 6c 74 12 0f 70 61 79 2d 69 6e 76 6f 69 63 65 2d 38 30 31 1a 0f 0a 0d 6d 6f 6e 65 79 54 72 61 6e 73 66 65 72 22 12 0a 0e 6d 6f 6e ... 240 more bytes>
-[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] write() called with message of length 290
-[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] end() called
-[client] D 2023-12-17T02:44:43.570Z | call_stream | Starting stream [1] on subchannel (2) 127.0.0.1:7233 with headers
+[client] D 2023-12-25T05:46:17.360Z | call_stream | [1] write() called with message of length 290
+[client] D 2023-12-25T05:46:17.360Z | call_stream | [1] end() called
+[client] D 2023-12-25T05:46:17.361Z | call_stream | Starting stream [1] on subchannel (2) 127.0.0.1:7233 with headers
 [client] 		client-name: temporal-typescript
 [client] 		client-version: 1.8.6
 [client] 		grpc-accept-encoding: identity,deflate,gzip
@@ -331,41 +792,88 @@
 [client] 		:path: /temporal.api.workflowservice.v1.WorkflowService/StartWorkflowExecution
 [client] 		te: trailers
 [client] 
-[client] D 2023-12-17T02:44:43.570Z | subchannel_flowctrl | (2) 127.0.0.1:7233 local window size: 65500 remote window size: 65535
-[client] D 2023-12-17T02:44:43.570Z | subchannel_internals | (2) 127.0.0.1:7233 session.closed=false session.destroyed=false session.socket.destroyed=false
-[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] attachHttp2Stream from subchannel 127.0.0.1:7233
-[client] D 2023-12-17T02:44:43.570Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 0 -> 1
-[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] sending data chunk of length 295
-[client] D 2023-12-17T02:44:43.570Z | call_stream | [1] calling end() on HTTP/2 stream
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] Received server headers:
+[client] D 2023-12-25T05:46:17.361Z | subchannel_flowctrl | (2) 127.0.0.1:7233 local window size: 65500 remote window size: 65535
+[client] D 2023-12-25T05:46:17.361Z | subchannel_internals | (2) 127.0.0.1:7233 session.closed=false session.destroyed=false session.socket.destroyed=false
+[client] D 2023-12-25T05:46:17.361Z | call_stream | [1] attachHttp2Stream from subchannel 127.0.0.1:7233
+[client] D 2023-12-25T05:46:17.361Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 0 -> 1
+[client] D 2023-12-25T05:46:17.361Z | call_stream | [1] sending data chunk of length 295
+[client] D 2023-12-25T05:46:17.361Z | call_stream | [1] calling end() on HTTP/2 stream
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] Received server headers:
 [client] 		:status: 200
 [client] 		content-type: application/grpc
 [client] 
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] receive HTTP/2 data frame of length 43
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] parsed message of length 43
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] filterReceivedMessage of length 43
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] pushing to reader message of length 38
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] Received server trailers:
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] receive HTTP/2 data frame of length 43
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] parsed message of length 43
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] filterReceivedMessage of length 43
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] pushing to reader message of length 38
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] Received server trailers:
 [client] 		grpc-status: 0
 [client] 		grpc-message: 
 [client] 
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] received status code 0 from server
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] received status details string "" from server
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] close http2 stream with code 0
-[client] D 2023-12-17T02:44:43.572Z | call_stream | [1] ended with status: code=0 details=""
-[client] D 2023-12-17T02:44:43.572Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 1 -> 0
-[server] {"level":"info","ts":"2023-12-17T11:44:43.572+0900","msg":"matching client encountered error","service":"history","error":"Not enough hosts to serve the request","service-error-type":"serviceerror.Unavailable","logging-call-at":"metric_client.go:219"}
-[server] {"level":"error","ts":"2023-12-17T11:44:43.573+0900","msg":"Fail to process task","shard-id":1,"address":"127.0.0.1:54151","component":"transfer-queue-processor","wf-namespace-id":"712a0e48-608f-4a3c-94bc-af67838db755","wf-id":"pay-invoice-801","wf-run-id":"39f03246-6a6d-40d5-8e96-104cf4a5fe48","queue-task-id":1048591,"queue-task-visibility-timestamp":"2023-12-17T02:44:43.571Z","queue-task-type":"TransferWorkflowTask","queue-task":{"NamespaceID":"712a0e48-608f-4a3c-94bc-af67838db755","WorkflowID":"pay-invoice-801","RunID":"39f03246-6a6d-40d5-8e96-104cf4a5fe48","VisibilityTimestamp":"2023-12-17T02:44:43.571524Z","TaskID":1048591,"TaskQueue":"money-transfer","ScheduledEventID":2,"Version":0},"wf-history-event-id":2,"error":"Not enough hosts to serve the request","lifecycle":"ProcessingFailed","logging-call-at":"lazy_logger.go:68","stacktrace":"go.temporal.io/server/common/log.(*zapLogger).Error\n\tgo.temporal.io/server@v1.22.0/common/log/zap_logger.go:156\ngo.temporal.io/server/common/log.(*lazyLogger).Error\n\tgo.temporal.io/server@v1.22.0/common/log/lazy_logger.go:68\ngo.temporal.io/server/service/history/queues.(*executableImpl).HandleErr\n\tgo.temporal.io/server@v1.22.0/service/history/queues/executable.go:347\ngo.temporal.io/server/common/tasks.(*FIFOScheduler[...]).executeTask.func1\n\tgo.temporal.io/server@v1.22.0/common/tasks/fifo_scheduler.go:224\ngo.temporal.io/server/common/backoff.ThrottleRetry.func1\n\tgo.temporal.io/server@v1.22.0/common/backoff/retry.go:119\ngo.temporal.io/server/common/backoff.ThrottleRetryContext\n\tgo.temporal.io/server@v1.22.0/common/backoff/retry.go:145\ngo.temporal.io/server/common/backoff.ThrottleRetry\n\tgo.temporal.io/server@v1.22.0/common/backoff/retry.go:120\ngo.temporal.io/server/common/tasks.(*FIFOScheduler[...]).executeTask\n\tgo.temporal.io/server@v1.22.0/common/tasks/fifo_scheduler.go:233\ngo.temporal.io/server/common/tasks.(*FIFOScheduler[...]).processTask\n\tgo.temporal.io/server@v1.22.0/common/tasks/fifo_scheduler.go:211"}
-[server] {"level":"info","ts":"2023-12-17T11:44:43.573+0900","msg":"Current reachable members","component":"service-resolver","service":"matching","addresses":["127.0.0.1:54153"],"logging-call-at":"service_resolver.go:279"}
-[client] D 2023-12-17T02:44:43.573Z | call_stream | [1] HTTP/2 stream closed with code 0
-[client] Started Workflow pay-invoice-801 with RunID 39f03246-6a6d-40d5-8e96-104cf4a5fe48
-[client] D 2023-12-17T02:44:43.574Z | channel | (1) dns:127.0.0.1:7233 createCall [2] method="/temporal.api.workflowservice.v1.WorkflowService/GetWorkflowExecutionHistory", deadline=Infinity
-[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] Sending metadata
-[client] D 2023-12-17T02:44:43.574Z | channel | (1) dns:127.0.0.1:7233 Pick result for call [2]: COMPLETE subchannel: (2) 127.0.0.1:7233 status: undefined undefined
-[client] GRPC.sendMessage <Buffer 0a 07 64 65 66 61 75 6c 74 12 37 0a 0f 70 61 79 2d 69 6e 76 6f 69 63 65 2d 38 30 31 12 24 33 39 66 30 33 32 34 36 2d 36 61 36 64 2d 34 30 64 35 2d 38 ... 22 more bytes>
-[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] write() called with message of length 72
-[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] end() called
-[client] D 2023-12-17T02:44:43.574Z | call_stream | Starting stream [2] on subchannel (2) 127.0.0.1:7233 with headers
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] received status code 0 from server
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] received status details string "" from server
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] close http2 stream with code 0
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] ended with status: code=0 details=""
+[client] D 2023-12-25T05:46:17.363Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 1 -> 0
+[server] 2023-12-25T14:46:17.363+0900	[34mINFO[0m	matching client encountered error	{"service": "history", "error": "Not enough hosts to serve the request", "service-error-type": "serviceerror.Unavailable", "logging-call-at": "metric_client.go:219"}
+[server] 2023-12-25T14:46:17.363+0900	[34mINFO[0m	Current reachable members	{"component": "service-resolver", "service": "matching", "addresses": ["127.0.0.1:53276"], "logging-call-at": "service_resolver.go:279"}
+[server] 2023-12-25T14:46:17.363+0900	[31mERROR[0m	Fail to process task	{"shard-id": 1, "address": "127.0.0.1:53274", "component": "transfer-queue-processor", "wf-namespace-id": "e46467b8-3210-4f06-88d8-4cfd3c7acb51", "wf-id": "pay-invoice-801", "wf-run-id": "06a5de34-9bfe-468d-b976-37b6da69bf01", "queue-task-id": 1048591, "queue-task-visibility-timestamp": "2023-12-25T05:46:17.362Z", "queue-task-type": "TransferWorkflowTask", "queue-task": {"NamespaceID":"e46467b8-3210-4f06-88d8-4cfd3c7acb51","WorkflowID":"pay-invoice-801","RunID":"06a5de34-9bfe-468d-b976-37b6da69bf01","VisibilityTimestamp":"2023-12-25T05:46:17.362229Z","TaskID":1048591,"TaskQueue":"money-transfer","ScheduledEventID":2,"Version":0}, "wf-history-event-id": 2, "error": "Not enough hosts to serve the request", "lifecycle": "ProcessingFailed", "logging-call-at": "lazy_logger.go:68"}
+[server] go.temporal.io/server/common/log.(*zapLogger).Error
+[server] 	go.temporal.io/server@v1.22.0/common/log/zap_logger.go:156
+[server] go.temporal.io/server/common/log.(*lazyLogger).Error
+[server] 	go.temporal.io/server@v1.22.0/common/log/lazy_logger.go:68
+[server] go.temporal.io/server/service/history/queues.(*executableImpl).HandleErr
+[server] 	go.temporal.io/server@v1.22.0/service/history/queues/executable.go:347
+[server] go.temporal.io/server/common/tasks.(*FIFOScheduler[...]).executeTask.func1
+[server] 	go.temporal.io/server@v1.22.0/common/tasks/fifo_scheduler.go:224
+[server] go.temporal.io/server/common/backoff.ThrottleRetry.func1
+[server] 	go.temporal.io/server@v1.22.0/common/backoff/retry.go:119
+[server] go.temporal.io/server/common/backoff.ThrottleRetryContext
+[server] 	go.temporal.io/server@v1.22.0/common/backoff/retry.go:145
+[server] go.temporal.io/server/common/backoff.ThrottleRetry
+[server] 	go.temporal.io/server@v1.22.0/common/backoff/retry.go:120
+[server] go.temporal.io/server/common/tasks.(*FIFOScheduler[...]).executeTask
+[server] 	go.temporal.io/server@v1.22.0/common/tasks/fifo_scheduler.go:233
+[server] go.temporal.io/server/common/tasks.(*FIFOScheduler[...]).processTask
+[server] 	go.temporal.io/server@v1.22.0/common/tasks/fifo_scheduler.go:211
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] Channel created
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] original dial target is: "127.0.0.1:53276"
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] dial target "127.0.0.1:53276" parse failed: parse "127.0.0.1:53276": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:53276 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] Channel authority set to "127.0.0.1:53276"
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:53276",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:17 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:53276", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57 SubChannel #58] Subchannel created
+[server] 2023/12/25 14:46:17 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] Channel Connectivity change to CONNECTING
+[client] D 2023-12-25T05:46:17.363Z | call_stream | [1] HTTP/2 stream closed with code 0
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57 SubChannel #58] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57 SubChannel #58] Subchannel picks a new address "127.0.0.1:53276" to connect
+[server] 2023/12/25 14:46:17 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140030fc2d0, CONNECTING
+[client] Started Workflow pay-invoice-801 with RunID 06a5de34-9bfe-468d-b976-37b6da69bf01
+[client] D 2023-12-25T05:46:17.364Z | channel | (1) dns:127.0.0.1:7233 createCall [2] method="/temporal.api.workflowservice.v1.WorkflowService/GetWorkflowExecutionHistory", deadline=Infinity
+[client] D 2023-12-25T05:46:17.364Z | call_stream | [2] Sending metadata
+[client] D 2023-12-25T05:46:17.364Z | channel | (1) dns:127.0.0.1:7233 Pick result for call [2]: COMPLETE subchannel: (2) 127.0.0.1:7233 status: undefined undefined
+[client] GRPC.sendMessage <Buffer 0a 07 64 65 66 61 75 6c 74 12 37 0a 0f 70 61 79 2d 69 6e 76 6f 69 63 65 2d 38 30 31 12 24 30 36 61 35 64 65 33 34 2d 39 62 66 65 2d 34 36 38 64 2d 62 ... 22 more bytes>
+[client] D 2023-12-25T05:46:17.364Z | call_stream | [2] write() called with message of length 72
+[client] D 2023-12-25T05:46:17.364Z | call_stream | [2] end() called
+[client] D 2023-12-25T05:46:17.365Z | call_stream | Starting stream [2] on subchannel (2) 127.0.0.1:7233 with headers
 [client] 		client-name: temporal-typescript
 [client] 		client-version: 1.8.6
 [client] 		grpc-accept-encoding: identity,deflate,gzip
@@ -377,29 +885,66 @@
 [client] 		:path: /temporal.api.workflowservice.v1.WorkflowService/GetWorkflowExecutionHistory
 [client] 		te: trailers
 [client] 
-[client] D 2023-12-17T02:44:43.574Z | subchannel_flowctrl | (2) 127.0.0.1:7233 local window size: 65457 remote window size: 65535
-[client] D 2023-12-17T02:44:43.574Z | subchannel_internals | (2) 127.0.0.1:7233 session.closed=false session.destroyed=false session.socket.destroyed=false
-[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] attachHttp2Stream from subchannel 127.0.0.1:7233
-[client] D 2023-12-17T02:44:43.574Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 0 -> 1
-[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] sending data chunk of length 77
-[client] D 2023-12-17T02:44:43.574Z | call_stream | [2] calling end() on HTTP/2 stream
+[client] D 2023-12-25T05:46:17.365Z | subchannel_flowctrl | (2) 127.0.0.1:7233 local window size: 65457 remote window size: 65535
+[client] D 2023-12-25T05:46:17.365Z | subchannel_internals | (2) 127.0.0.1:7233 session.closed=false session.destroyed=false session.socket.destroyed=false
+[client] D 2023-12-25T05:46:17.365Z | call_stream | [2] attachHttp2Stream from subchannel 127.0.0.1:7233
+[client] D 2023-12-25T05:46:17.365Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 0 -> 1
+[client] D 2023-12-25T05:46:17.365Z | call_stream | [2] sending data chunk of length 77
+[client] D 2023-12-25T05:46:17.365Z | call_stream | [2] calling end() on HTTP/2 stream
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57 SubChannel #58] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:17 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140030fc2d0, READY
+[server] 2023/12/25 14:46:17 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:58):{{Addr: "127.0.0.1:53276", ServerName: "", }}]}
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #57] Channel Connectivity change to READY
+[server] 2023-12-25T14:46:17.366+0900	[34mINFO[0m	none	{"service": "matching", "component": "matching-engine", "wf-task-queue-name": "/_sys/money-transfer/1", "wf-task-queue-type": "Workflow", "wf-namespace": "default", "lifecycle": "Started", "logging-call-at": "task_queue_manager.go:331"}
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] Channel created
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] original dial target is: "127.0.0.1:53274"
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] dial target "127.0.0.1:53274" parse failed: parse "127.0.0.1:53274": first path segment in URL cannot contain colon
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] fallback to scheme "passthrough"
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/127.0.0.1:53274 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] Channel authority set to "127.0.0.1:53274"
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] Resolver state updated: {
+[server]   "Addresses": [
+[server]     {
+[server]       "Addr": "127.0.0.1:53274",
+[server]       "ServerName": "",
+[server]       "Attributes": null,
+[server]       "BalancerAttributes": null,
+[server]       "Type": 0,
+[server]       "Metadata": null
+[server]     }
+[server]   ],
+[server]   "ServiceConfig": null,
+[server]   "Attributes": null
+[server] } (resolver returned new addresses)
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] ignoring service config from resolver (<nil>) and applying the default because service config is disabled
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] Channel switches to new LB policy "round_robin"
+[server] 2023/12/25 14:46:17 INFO: [balancer] base.baseBalancer: got new ClientConn state:  {{[{Addr: "127.0.0.1:53274", ServerName: "", }] <nil> <nil>} <nil>}
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61 SubChannel #62] Subchannel created
+[server] 2023/12/25 14:46:17 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[]}
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] Channel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61 SubChannel #62] Subchannel Connectivity change to CONNECTING
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61 SubChannel #62] Subchannel picks a new address "127.0.0.1:53274" to connect
+[server] 2023/12/25 14:46:17 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140030fced0, CONNECTING
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61 SubChannel #62] Subchannel Connectivity change to READY
+[server] 2023/12/25 14:46:17 INFO: [balancer] base.baseBalancer: handle SubConn state change: 0x140030fced0, READY
+[server] 2023/12/25 14:46:17 INFO: [roundrobin] roundrobinPicker: Build called with info: {map[SubConn(id:62):{{Addr: "127.0.0.1:53274", ServerName: "", }}]}
+[server] 2023/12/25 14:46:17 INFO: [core] [Channel #61] Channel Connectivity change to READY
 [worker] [moneyTransfer(pay-invoice-801)] DEBUG: /index.js
-[server] {"level":"info","ts":"2023-12-17T11:44:43.629+0900","msg":"none","service":"matching","component":"matching-engine","wf-task-queue-name":"/_sys/money-transfer/3","wf-task-queue-type":"Activity","wf-namespace":"default","lifecycle":"Started","logging-call-at":"task_queue_manager.go:331"}
 [worker] Withdrawing $400 from account 85-150.
 [worker] 
 [worker] 
 [worker] {
-[worker]   traceId: 'a0e170ad1e1ebfdb972a2a271cc99eae',
-[worker]   parentId: '5eb90bbb63918062',
+[worker]   traceId: '5048b5cf9c1b8fe214c83e7f3e32b7b2',
+[worker]   parentId: 'f45c8c2eef0f5e10',
 [worker]   traceState: undefined,
 [worker]   name: 'StartActivity:withdraw',
-[worker]   id: '67f5ef1683e7a6c9',
+[worker]   id: 'a6959e956bf5c3ed',
 [worker]   kind: 0,
-[worker]   timestamp: 1702781083579000,
-[worker]   duration: 56000,
+[worker]   timestamp: 1703483177369000,
+[worker]   duration: 54000,
 [worker]   attributes: {
 [worker]     workflowId: 'pay-invoice-801',
-[worker]     runId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     runId: '06a5de34-9bfe-468d-b976-37b6da69bf01',
 [worker]     workflowType: 'moneyTransfer',
 [worker]     searchAttributes: {},
 [worker]     memo: undefined,
@@ -408,10 +953,10 @@
 [worker]     lastFailure: undefined,
 [worker]     taskQueue: 'money-transfer',
 [worker]     namespace: 'default',
-[worker]     firstExecutionRunId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     firstExecutionRunId: '06a5de34-9bfe-468d-b976-37b6da69bf01',
 [worker]     continuedFromExecutionRunId: undefined,
-[worker]     startTime: 2023-12-17T02:44:43.571Z,
-[worker]     runStartTime: 2023-12-17T02:44:43.579Z,
+[worker]     startTime: 2023-12-25T05:46:17.362Z,
+[worker]     runStartTime: 2023-12-25T05:46:17.369Z,
 [worker]     executionTimeoutMs: undefined,
 [worker]     executionExpirationTime: undefined,
 [worker]     runTimeoutMs: undefined,
@@ -433,17 +978,17 @@
 [worker] 
 [worker] 
 [worker] {
-[worker]   traceId: 'a0e170ad1e1ebfdb972a2a271cc99eae',
-[worker]   parentId: '5eb90bbb63918062',
+[worker]   traceId: '5048b5cf9c1b8fe214c83e7f3e32b7b2',
+[worker]   parentId: 'f45c8c2eef0f5e10',
 [worker]   traceState: undefined,
 [worker]   name: 'StartActivity:deposit',
-[worker]   id: '6d0f0d396e8897ba',
+[worker]   id: '3f530f999594590e',
 [worker]   kind: 0,
-[worker]   timestamp: 1702781083635000,
-[worker]   duration: 11000,
+[worker]   timestamp: 1703483177423000,
+[worker]   duration: 10000,
 [worker]   attributes: {
 [worker]     workflowId: 'pay-invoice-801',
-[worker]     runId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     runId: '06a5de34-9bfe-468d-b976-37b6da69bf01',
 [worker]     workflowType: 'moneyTransfer',
 [worker]     searchAttributes: {},
 [worker]     memo: undefined,
@@ -452,10 +997,10 @@
 [worker]     lastFailure: undefined,
 [worker]     taskQueue: 'money-transfer',
 [worker]     namespace: 'default',
-[worker]     firstExecutionRunId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     firstExecutionRunId: '06a5de34-9bfe-468d-b976-37b6da69bf01',
 [worker]     continuedFromExecutionRunId: undefined,
-[worker]     startTime: 2023-12-17T02:44:43.571Z,
-[worker]     runStartTime: 2023-12-17T02:44:43.579Z,
+[worker]     startTime: 2023-12-25T05:46:17.362Z,
+[worker]     runStartTime: 2023-12-25T05:46:17.369Z,
 [worker]     executionTimeoutMs: undefined,
 [worker]     executionExpirationTime: undefined,
 [worker]     runTimeoutMs: undefined,
@@ -474,17 +1019,17 @@
 [worker]   links: []
 [worker] }
 [worker] {
-[worker]   traceId: 'a0e170ad1e1ebfdb972a2a271cc99eae',
+[worker]   traceId: '5048b5cf9c1b8fe214c83e7f3e32b7b2',
 [worker]   parentId: undefined,
 [worker]   traceState: undefined,
 [worker]   name: 'RunWorkflow:moneyTransfer',
-[worker]   id: '5eb90bbb63918062',
+[worker]   id: 'f45c8c2eef0f5e10',
 [worker]   kind: 0,
-[worker]   timestamp: 1702781083579000,
-[worker]   duration: 67000,
+[worker]   timestamp: 1703483177369000,
+[worker]   duration: 64000,
 [worker]   attributes: {
 [worker]     workflowId: 'pay-invoice-801',
-[worker]     runId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     runId: '06a5de34-9bfe-468d-b976-37b6da69bf01',
 [worker]     workflowType: 'moneyTransfer',
 [worker]     searchAttributes: {},
 [worker]     memo: undefined,
@@ -493,10 +1038,10 @@
 [worker]     lastFailure: undefined,
 [worker]     taskQueue: 'money-transfer',
 [worker]     namespace: 'default',
-[worker]     firstExecutionRunId: '39f03246-6a6d-40d5-8e96-104cf4a5fe48',
+[worker]     firstExecutionRunId: '06a5de34-9bfe-468d-b976-37b6da69bf01',
 [worker]     continuedFromExecutionRunId: undefined,
-[worker]     startTime: 2023-12-17T02:44:43.571Z,
-[worker]     runStartTime: 2023-12-17T02:44:43.579Z,
+[worker]     startTime: 2023-12-25T05:46:17.362Z,
+[worker]     runStartTime: 2023-12-25T05:46:17.369Z,
 [worker]     executionTimeoutMs: undefined,
 [worker]     executionExpirationTime: undefined,
 [worker]     runTimeoutMs: undefined,
@@ -514,26 +1059,25 @@
 [worker]   events: [],
 [worker]   links: []
 [worker] }
-[client] D 2023-12-17T02:44:43.652Z | call_stream | [2] Received server headers:
+[client] D 2023-12-25T05:46:17.438Z | call_stream | [2] Received server headers:
 [client] 		:status: 200
 [client] 		content-type: application/grpc
 [client] 
-[client] D 2023-12-17T02:44:43.652Z | call_stream | [2] receive HTTP/2 data frame of length 128
-[client] D 2023-12-17T02:44:43.652Z | call_stream | [2] parsed message of length 128
-[client] D 2023-12-17T02:44:43.652Z | call_stream | [2] filterReceivedMessage of length 128
-[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] pushing to reader message of length 123
-[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] Received server trailers:
+[client] D 2023-12-25T05:46:17.438Z | call_stream | [2] receive HTTP/2 data frame of length 128
+[client] D 2023-12-25T05:46:17.438Z | call_stream | [2] parsed message of length 128
+[client] D 2023-12-25T05:46:17.438Z | call_stream | [2] filterReceivedMessage of length 128
+[client] D 2023-12-25T05:46:17.439Z | call_stream | [2] pushing to reader message of length 123
+[client] D 2023-12-25T05:46:17.439Z | call_stream | [2] Received server trailers:
 [client] 		grpc-status: 0
 [client] 		grpc-message: 
 [client] 
-[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] received status code 0 from server
-[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] received status details string "" from server
-[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] close http2 stream with code 0
-[client] D 2023-12-17T02:44:43.653Z | call_stream | [2] ended with status: code=0 details=""
-[client] D 2023-12-17T02:44:43.653Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 1 -> 0
-[client] D 2023-12-17T02:44:43.657Z | call_stream | [2] HTTP/2 stream closed with code 0
-[client] Transfer complete (transaction IDs: W8145830144, D5618311997)
+[client] D 2023-12-25T05:46:17.439Z | call_stream | [2] received status code 0 from server
+[client] D 2023-12-25T05:46:17.439Z | call_stream | [2] received status details string "" from server
+[client] D 2023-12-25T05:46:17.439Z | call_stream | [2] close http2 stream with code 0
+[client] D 2023-12-25T05:46:17.439Z | call_stream | [2] ended with status: code=0 details=""
+[client] D 2023-12-25T05:46:17.439Z | subchannel_refcount | (2) 127.0.0.1:7233 callRefcount 1 -> 0
+[client] D 2023-12-25T05:46:17.443Z | call_stream | [2] HTTP/2 stream closed with code 0
+[client] Transfer complete (transaction IDs: W7470069183, D1321406186)
+[server] 2023/12/25 14:46:17 INFO: [transport] [server-transport 0x14002fc6ea0] Closing: EOF
+[server] 2023/12/25 14:46:17 INFO: [transport] [server-transport 0x14002fc6ea0] loopyWriter exiting with error: transport closed by client
 [client] sleep 3 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run client exited with code 0
-[server] {"level":"info","ts":"2023-12-17T11:44:49.111+0900","msg":"Current reachable members","component":"service-resolver","service":"frontend","addresses":["127.0.0.1:7233"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:49.111+0900","msg":"Current reachable members","component":"service-resolver","service":"frontend","addresses":["127.0.0.1:7233"],"logging-call-at":"service_resolver.go:279"}
-[server] {"level":"info","ts":"2023-12-17T11:44:49.111+0900","msg":"Current reachable members","component":"service-resolver","service":"worker","addresses":["127.0.0.1:54155"],"logging-call-at":"service_resolver.go:279"}

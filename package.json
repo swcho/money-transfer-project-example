@@ -12,7 +12,7 @@
     "worker": "ts-node src/worker.ts",
     "worker:debug": "node lib/worker.js",
     "worker.watch": "nodemon src/worker.ts",
-    "execute": "concurrently --names 'server,worker,client' -c 'blue,red,green' 'GRPC_VERBOSITY=DEBUG GRPC_TRACE=all temporal server start-dev' 'sleep 1 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run worker' 'sleep 3 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run client'"
+    "execute": "concurrently --names 'server,worker,client' -c 'blue,red,green' 'GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info temporal server start-dev --log-format pretty' 'sleep 1 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run worker' 'sleep 3 && GRPC_VERBOSITY=DEBUG GRPC_TRACE=all npm run client'"
   },
   "nodemonConfig": {
     "execMap": {
